@@ -34,7 +34,7 @@ h1{font-size:clamp(48px,8vw,92px);line-height:.92;letter-spacing:-.06em;margin:2
 .growth-top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:20px}
 .growth-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#77736c}.growth-status{font-size:10px;color:var(--gold);letter-spacing:.08em}
 .chart{height:255px;position:relative}.chart-grid{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between}.grid-line{border-top:1px solid rgba(255,255,255,.07)}
-.chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.chart-path{fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1100;stroke-dashoffset:1100}.chart-area{fill:url(#goldFade);opacity:0}
+.chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.chart-path{fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--chart-length,1100);stroke-dashoffset:var(--chart-length,1100);opacity:1}.chart-area{fill:url(#goldFade);opacity:0}
 .growth-card.animate .chart-path{animation:drawGrowth 2.1s cubic-bezier(.2,.7,.2,1) forwards}.growth-card.animate .chart-area{animation:fadeGrowth 1.7s ease .2s forwards}
 @keyframes drawGrowth{to{stroke-dashoffset:0}}@keyframes fadeGrowth{to{opacity:1}}.chart-dot{fill:var(--gold);stroke:#080808;stroke-width:4}
 .chart-labels{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:13px}.chart-label{font-size:9px;color:#77736c;letter-spacing:.1em;text-transform:uppercase}.chart-label strong{display:block;color:#eee9df;font-size:12px;letter-spacing:0;margin-top:5px}
@@ -256,6 +256,58 @@ $("#start")?.addEventListener("click",openDiag);$("#start2")?.addEventListener("
 closeBtn?.addEventListener("click",closeDiag);nextBtn?.addEventListener("click",goNext);backBtn?.addEventListener("click",goBack);
 overlay?.addEventListener("click",e=>{if(e.target===overlay)closeDiag()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(state.diagOpen)closeDiag();else if(state.menuOpen)closeMenu()}});
+
+function initGrowthChart(){
+  const card=document.getElementById("growthCard");
+  const path=card?.querySelector(".chart-path");
+  const area=card?.querySelector(".chart-area");
+  if(!card||!path)return;
+
+  let length=1100;
+  try{
+    const measured=path.getTotalLength();
+    if(Number.isFinite(measured)&&measured>0)length=measured;
+  }catch(_){}
+
+  path.style.setProperty("--chart-length",String(length));
+  path.style.strokeDasharray=String(length);
+  path.style.strokeDashoffset=String(length);
+
+  const animate=()=>{
+    card.classList.add("animate");
+    path.animate(
+      [{strokeDashoffset:length},{strokeDashoffset:0}],
+      {duration:2100,easing:"cubic-bezier(.2,.7,.2,1)",fill:"forwards"}
+    );
+    if(area){
+      area.animate(
+        [{opacity:0},{opacity:1}],
+        {duration:1700,delay:200,easing:"ease",fill:"forwards"}
+      );
+    }
+  };
+
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+    card.classList.add("animate");
+    path.style.strokeDashoffset="0";
+    if(area)area.style.opacity="1";
+    return;
+  }
+
+  if("IntersectionObserver" in window){
+    const observer=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting)){
+        animate();
+        observer.disconnect();
+      }
+    },{threshold:.25});
+    observer.observe(card);
+  }else{
+    animate();
+  }
+}
+initGrowthChart();
+
 applyLanguage();overlay?.setAttribute("aria-hidden","true");
 </script>
 </body></html>
