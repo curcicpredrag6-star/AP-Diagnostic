@@ -85,7 +85,7 @@ h1{font-size:clamp(43px,13vw,66px)}
 </style>
 </head>
 <body>
-<header class="wrap"><a class="logo" href="#">AP.STUDIO</a><div class="mobile-langs"><button data-lang="en" class="active">EN</button><button data-lang="es">ES</button><button data-lang="ca">CA</button></div><button class="menu" id="menu" aria-label="Open menu" aria-expanded="false">☰</button><nav id="nav"><a href="#method" data-k="method">Method</a><a href="#growth" data-k="growth">Growth</a><a href="#about" data-k="about">About</a><a href="mailto:info@apstudio.com" data-k="contact">Contact</a><div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="es">ES</button><button data-lang="ca">CA</button></div></nav></header>
+<header class="wrap"><a class="logo" href="#">AP.STUDIO</a><div class="mobile-langs"><button data-lang="en" class="active">EN</button><button data-lang="es">ES</button><button data-lang="ca">CA</button></div><button class="menu" id="menu" aria-label="Open menu" aria-expanded="false">☰</button><nav id="nav"><a href="#method" data-k="method">Method</a><a href="#growth" data-k="growth">Growth</a><a href="#about" data-k="about">About</a><a href="mailto:info@apstudio.com" data-k="contact">Contact</a></nav></header>
 <main>
 <section class="hero"><div class="wrap hero-inner"><div class="eyebrow" data-k="eyebrow">AP GROWTH SYSTEM</div><h1 data-k="heroTitle">Discover what's next for your business.</h1><p data-k="heroText">A practical diagnostic that helps ambitious businesses find their next growth opportunity — and the right moves to unlock it.</p>
 <div class="actions"><button class="btn" id="start" data-k="start">START AP DIAGNOSTIC →</button><a class="btn secondary" href="#method" data-k="how">HOW IT WORKS</a></div><div class="meta"><span data-k="m1">5 MINUTES</span><span data-k="m2">FREE</span><span data-k="m3">BUILT AROUND YOUR BUSINESS</span></div></div></section>
@@ -429,4 +429,19 @@ button,a{touch-action:manipulation}
 }
 @media(max-width:390px){header.wrap{padding:0 12px}.mobile-langs{margin-right:5px}.mobile-langs button{padding:6px 3px}.menu{width:38px;height:38px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+
+/* AP SAFE UX FIX — menu + end-of-page overscroll */
+html,body{overscroll-behavior-y:none}
+@media(max-width:900px){
+  #nav#nav{
+    overflow:hidden!important;
+    overscroll-behavior:none!important;
+    touch-action:manipulation!important;
+    justify-content:center!important;
+    padding:30px 26px!important;
+  }
+  #nav#nav .lang{display:none!important}
+  #nav#nav a{flex:0 0 auto!important}
+}
+
 </style>
