@@ -126,8 +126,9 @@ h1{font-size:clamp(43px,13vw,66px)}
 
 <section class="section center" id="idea"><div class="wrap"><div class="kicker" data-k="ik">THE IDEA</div><h2 data-k="it">Your business has potential.<br>Let's find where it can go next.</h2><p class="lead" data-k="ip">No consultant-speak. No unnecessary deliverables. Just a sharper view of your business and what to do next.</p><div class="actions"><button class="btn" id="start2" data-k="start2">FIND MY NEXT OPPORTUNITY →</button></div></div></section>
 </main><footer><div class="wrap foot"><span>AP.STUDIO — <span data-k="ft">BUILD WHAT'S NEXT.</span></span><span>© 2026 AP Studio</span></div></footer>
-<div class="overlay" id="overlay"><div class="diag"><div class="diaghead"><div><div class="kicker">AP DIAGNOSTIC</div><div class="diagtitle" data-k="dt">Let's find your next opportunity.</div></div><button class="close" id="close">×</button></div><div class="progress"><div class="bar" id="bar"></div></div><div id="qa"></div><div class="diagfoot"><button class="back" id="back" data-k="back">← Back</button><button class="btn" id="next" data-k="next">NEXT →</button></div></div></div>
+<div class="overlay" id="overlay" aria-hidden="true" role="dialog" aria-modal="true"><div class="diag"><div class="diaghead"><div><div class="kicker">AP DIAGNOSTIC</div><div class="diagtitle" data-k="dt">Let's find your next opportunity.</div></div><button class="close" id="close" type="button" aria-label="Close">×</button></div><div class="progress"><div class="bar" id="bar"></div></div><div id="qa"></div><div class="diagfoot"><button class="back" id="back" data-k="back">← Back</button><button class="btn" id="next" data-k="next">NEXT →</button></div></div></div>
 <script>
+"use strict";
 const I={
 en:{focusLabel:"WE WORK WITH AMBITIOUS BUSINESSES",focusBeauty:"BEAUTY",focusFitness:"FITNESS",focusHospitality:"BARS & HOSPITALITY",focusLifestyle:"LIFESTYLE",growth:"Growth",about:"About",gk:"THE AP GROWTH PATH",gt:"Make progress visible.",gp:"Growth is not one big move. It's a sequence of better decisions. AP helps turn that sequence into momentum.",chartLabel:"A TYPICAL AP JOURNEY",momentum:"MOMENTUM",c1:"01",c2:"02",c3:"03",c4:"04",ak:"ABOUT AP",at:"Two disciplines.<br>One point of view.",ap:"AP brings technology and growth together. One side understands how digital systems work. The other understands how brands, people and markets move. Together, we turn ideas into experiences that are built to grow.",techRole:"IT & DIGITAL",techCopy:"Technology, digital systems and execution.",growthRole:"MARKETING & GROWTH",growthCopy:"Marketing, communication, creativity and growth.",method:"Method",why:"Why AP",contact:"Contact",eyebrow:"AP GROWTH SYSTEM",heroTitle:"Discover what's next for your business.",heroText:"A practical diagnostic that helps ambitious businesses find their next growth opportunity — and the right moves to unlock it.",start:"START AP DIAGNOSTIC →",how:"HOW IT WORKS",m1:"5 MINUTES",m2:"FREE",m3:"BUILT AROUND YOUR BUSINESS",mk:"THE AP METHOD",mt:"Clarity before action.",mp:"We don't start by selling you a website, campaign or rebrand. We start by understanding your business, finding the opportunity and deciding what deserves attention first.",s1t:"DISCOVER",s1p:"Tell us what's really happening in your business.",s2t:"DIAGNOSE",s2p:"We identify the opportunity with the biggest potential impact.",s3t:"MOVE",s3p:"Get a clear direction — and work with us to make it real.",ik:"THE IDEA",it:"Your business has potential.<br>Let's find where it can go next.",ip:"No consultant-speak. No unnecessary deliverables. Just a sharper view of your business and what to do next.",start2:"FIND MY NEXT OPPORTUNITY →",ft:"BUILD WHAT'S NEXT.",dt:"Let's find your next opportunity.",back:"← Back",next:"NEXT →",finish:"SHOW MY AP INSIGHT →",business:"What kind of business do you run?",biz:["Beauty / Aesthetics","Gym / Fitness","Bar / Restaurant / Hospitality","Lifestyle / Retail","Other business"]},
 es:{focusLabel:"TRABAJAMOS CON NEGOCIOS AMBICIOSOS",focusBeauty:"BELLEZA",focusFitness:"FITNESS",focusHospitality:"BARES & HOSPITALITY",focusLifestyle:"LIFESTYLE",growth:"Crecimiento",about:"Nosotros",gk:"EL CAMINO DE CRECIMIENTO AP",gt:"Haz visible el progreso.",gp:"El crecimiento no es un solo gran movimiento. Es una secuencia de mejores decisiones. AP convierte esa secuencia en impulso.",chartLabel:"UN VIAJE AP TÍPICO",momentum:"IMPULSO",c1:"01",c2:"02",c3:"03",c4:"04",ak:"SOBRE AP",at:"Dos disciplinas.<br>Una misma visión.",ap:"AP une tecnología y crecimiento. Un lado entiende cómo funcionan los sistemas digitales. El otro entiende cómo se mueven las marcas, las personas y los mercados. Juntos convertimos ideas en experiencias preparadas para crecer.",techRole:"IT & DIGITAL",techCopy:"Tecnología, sistemas digitales y ejecución.",growthRole:"MARKETING & GROWTH",growthCopy:"Marketing, comunicación, creatividad y crecimiento.",method:"Método",why:"Por qué AP",contact:"Contacto",eyebrow:"SISTEMA DE CRECIMIENTO AP",heroTitle:"Descubre cuál es el siguiente paso para tu negocio.",heroText:"Un diagnóstico práctico para encontrar tu próxima oportunidad de crecimiento y las acciones adecuadas para desbloquearla.",start:"EMPEZAR DIAGNÓSTICO AP →",how:"CÓMO FUNCIONA",m1:"5 MINUTOS",m2:"GRATIS",m3:"ADAPTADO A TU NEGOCIO",mk:"EL MÉTODO AP",mt:"Claridad antes de actuar.",mp:"No empezamos vendiéndote una web, una campaña o un rebranding. Primero entendemos tu negocio, encontramos la oportunidad y decidimos qué merece atención.",s1t:"DESCUBRE",s1p:"Cuéntanos qué está pasando realmente en tu negocio.",s2t:"DIAGNOSTICA",s2p:"Identificamos la oportunidad con mayor potencial de impacto.",s3t:"AVANZA",s3p:"Obtén una dirección clara y, si quieres, la hacemos realidad contigo.",ik:"LA IDEA",it:"Tu negocio tiene potencial.<br>Descubramos hacia dónde puede crecer.",ip:"Sin lenguaje de consultoría. Sin entregables innecesarios. Solo una visión más clara de tu negocio y del siguiente paso.",start2:"ENCUENTRA TU PRÓXIMA OPORTUNIDAD →",ft:"CONSTRUYE LO QUE VIENE.",dt:"Descubramos tu próxima oportunidad.",back:"← Atrás",next:"SIGUIENTE →",finish:"VER MI INSIGHT AP →",business:"¿Qué tipo de negocio tienes?",biz:["Belleza / Estética","Gym / Fitness","Bar / Restaurante / Hospitality","Lifestyle / Retail","Otro negocio"]},
@@ -136,43 +137,161 @@ const Q={
 en:{common:[["What would you most like to improve right now?",["More customers / bookings","More repeat customers","A stronger reputation","A clearer brand","More visibility","More revenue from what we already have"]],["Where do most new customers currently come from?",["Instagram / social","Google / search","Word of mouth","Walk-ins / local traffic","Paid advertising","I'm not really sure"]],["What feels hardest at the moment?",["Getting people to notice us","Getting people to choose us","Getting people to come back","Keeping demand consistent","Knowing what to focus on","Turning attention into sales"]]],beauty:[["Where is your biggest opportunity right now?",["More first-time bookings","More repeat bookings","Higher-value treatments","Filling quiet days / hours","Standing out locally","More referrals"]],["What usually makes someone choose you?",["Reviews / reputation","Instagram / visual identity","Location / convenience","Price / offer","Your expertise","I'm not sure"]]],gym:[["Where would growth make the biggest difference?",["More new memberships","More trials converting","Better retention","Filling quiet hours","Higher-value memberships","More referrals"]],["Why do members choose your gym?",["Community","Coaching","Equipment / space","Location","Price","Our brand / atmosphere"]]],bar:[["Where is your biggest opportunity?",["Filling quiet days","Increasing average spend","More repeat guests","More bookings / groups","Becoming a destination","More events / collaborations"]],["When do you feel demand is weakest?",["Early week","Midweek","Late afternoon","Certain hours","It changes seasonally","Demand is fairly consistent"]],["Why do people choose your venue?",["Atmosphere","Drinks / food","Music / events","Location","Community","I'm not sure"]]],lifestyle:[["Where would growth make the biggest difference?",["More footfall","More online sales","More repeat customers","A stronger community","Better average order value","More visibility"]],["What makes people choose you?",["Product / quality","Aesthetic / brand","Price","Location","Community","I'm not sure"]]],other:[["What would make the biggest difference to your business?",["More customers","More repeat business","Higher-value sales","More visibility","A stronger brand","More clarity"]],["What feels hardest right now?",["Being discovered","Standing out","Converting interest","Keeping demand consistent","Knowing what to focus on","Growing profitably"]]]},
 es:{common:[["¿Qué te gustaría mejorar más ahora mismo?",["Más clientes / reservas","Más clientes recurrentes","Una reputación más fuerte","Una marca más clara","Más visibilidad","Más ingresos con lo que ya tienes"]],["¿De dónde vienen principalmente tus nuevos clientes?",["Instagram / redes","Google / búsquedas","Recomendaciones","Paso por delante / zona","Publicidad de pago","No lo tengo claro"]],["¿Qué es lo más difícil ahora mismo?",["Conseguir que nos descubran","Conseguir que nos elijan","Conseguir que vuelvan","Mantener una demanda constante","Saber en qué centrarnos","Convertir atención en ventas"]]],beauty:[["¿Dónde está tu mayor oportunidad?",["Más primeras reservas","Más reservas recurrentes","Tratamientos de mayor valor","Llenar días / horas flojas","Destacar localmente","Más recomendaciones"]],["¿Qué suele hacer que alguien te elija?",["Reseñas / reputación","Instagram / identidad visual","Ubicación / comodidad","Precio / oferta","Tu experiencia","No estoy seguro"]]],gym:[["¿Dónde marcaría más diferencia el crecimiento?",["Más membresías","Convertir más pruebas","Mejor retención","Llenar horas flojas","Membresías de mayor valor","Más recomendaciones"]],["¿Por qué eligen tu gym?",["Comunidad","Coaching","Equipamiento / espacio","Ubicación","Precio","Marca / ambiente"]]],bar:[["¿Dónde está tu mayor oportunidad?",["Llenar días flojos","Aumentar el gasto medio","Más clientes recurrentes","Más reservas / grupos","Convertirte en un destino","Más eventos / colaboraciones"]],["¿Cuándo notas menos demanda?",["Inicio de semana","Entre semana","Última hora de la tarde","Cambia por temporada","La demanda es bastante constante"]],["¿Por qué elige la gente tu local?",["Ambiente","Comida / bebida","Música / eventos","Ubicación","Comunidad","No lo tengo claro"]]],lifestyle:[["¿Dónde marcaría más diferencia el crecimiento?",["Más tráfico físico","Más ventas online","Más compras recurrentes","Una comunidad más fuerte","Mayor ticket medio","Más visibilidad"]],["¿Qué hace que te elijan?",["Producto / calidad","Estética / marca","Precio","Ubicación","Comunidad","No lo tengo claro"]]],other:[["¿Qué cambiaría más tu negocio?",["Más clientes","Más recurrencia","Ventas de mayor valor","Más visibilidad","Una marca más fuerte","Más claridad"]],["¿Qué es lo más difícil ahora?",["Que nos descubran","Destacar","Convertir interés","Mantener demanda","Saber en qué centrarnos","Crecer de forma rentable"]]]},
 ca:{common:[["Què t'agradaria millorar més ara mateix?",["Més clients / reserves","Més clients recurrents","Una reputació més forta","Una marca més clara","Més visibilitat","Més ingressos amb el que ja tens"]],["D'on venen principalment els teus nous clients?",["Instagram / xarxes","Google / cerques","Recomanacions","Pas de gent / zona","Publicitat de pagament","No ho tinc clar"]],["Què és el més difícil ara mateix?",["Aconseguir que ens descobreixin","Aconseguir que ens triïn","Aconseguir que tornin","Mantenir una demanda constant","Saber en què centrar-nos","Convertir atenció en vendes"]]],beauty:[["On és la teva major oportunitat?",["Més primeres reserves","Més reserves recurrents","Tractaments de més valor","Omplir dies / hores fluixes","Destacar localment","Més recomanacions"]],["Què fa que algú et triï?",["Ressenyes / reputació","Instagram / identitat visual","Ubicació / comoditat","Preu / oferta","La teva experiència","No n'estic segur"]]],gym:[["On marcaria més diferència el creixement?",["Més membres","Convertir més proves","Millor retenció","Omplir hores fluixes","Membresies de més valor","Més recomanacions"]],["Per què trien el teu gym?",["Comunitat","Coaching","Equipament / espai","Ubicació","Preu","Marca / ambient"]]],bar:[["On és la teva major oportunitat?",["Omplir dies fluixos","Augmentar la despesa mitjana","Més clients recurrents","Més reserves / grups","Convertir-te en un destí","Més esdeveniments / col·laboracions"]],["Quan notes menys demanda?",["Inici de setmana","Entre setmana","Última hora de la tarda","Certes hores","Canvia segons la temporada","La demanda és força constant"]],["Per què tria la gent el teu local?",["Ambient","Menjar / beguda","Música / esdeveniments","Ubicació","Comunitat","No ho tinc clar"]]],lifestyle:[["On marcaria més diferència el creixement?",["Més trànsit físic","Més vendes online","Més compres recurrents","Una comunitat més forta","Major tiquet mitjà","Més visibilitat"]],["Què fa que et triïn?",["Producte / qualitat","Estètica / marca","Preu","Ubicació","Comunitat","No ho tinc clar"]]],other:[["Què canviaria més el teu negoci?",["Més clients","Més recurrència","Vendes de més valor","Més visibilitat","Una marca més forta","Més claredat"]],["Què és el més difícil ara?",["Que ens descobreixin","Destacar","Convertir interès","Mantenir la demanda","Saber en què centrar-nos","Créixer de manera rendible"]]]}};
-let lang="en",type="",questions=[],answers=[],step=0;const $=s=>document.querySelector(s),overlay=$("#overlay"),qa=$("#qa"),bar=$("#bar"),next=$("#next"),back=$("#back");
-function applyLang(){const t=I[lang];document.documentElement.lang=lang;document.querySelectorAll("[data-k]").forEach(e=>{if(t[e.dataset.k]!=null)e.innerHTML=t[e.dataset.k]});document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));if(overlay.classList.contains("open"))render()}
-document.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{lang=b.dataset.lang;applyLang()});
-function openDiag(){type="";questions=[];answers=[];step=0;overlay.classList.add("open");document.body.style.overflow="hidden";render()}function closeDiag(){overlay.classList.remove("open");document.body.style.overflow=""}
-function build(){questions=[["BUSINESS",I[lang].biz],...(Q[lang][type]||Q[lang].other),...Q[lang].common]}
-function render(){const t=I[lang];if(!type){qa.innerHTML='<div class="qmeta">01 / 01</div><div class="question">'+t.business+'</div><div class="options">'+t.biz.map((x,i)=>'<button class="option" data-type="'+["beauty","gym","bar","lifestyle","other"][i]+'"><span>'+x+'</span><small>→</small></button>').join("")+'</div>';next.style.visibility="hidden";back.style.visibility="hidden";bar.style.width="0%";qa.querySelectorAll("[data-type]").forEach(b=>b.onclick=()=>{type=b.dataset.type;build();step=1;render()});return}
-const q=questions[step-1],selected=answers[step-1],total=questions.length;qa.innerHTML='<div class="qmeta">'+String(step).padStart(2,"0")+" / "+total+'</div><div class="question">'+q[0]+'</div><div class="options">'+q[1].map((x,i)=>'<button class="option '+(selected===i?"selected":"")+'" data-i="'+i+'"><span>'+x+'</span><small>'+(selected===i?"✓":"→")+'</small></button>').join("")+"</div>";qa.querySelectorAll(".option").forEach(b=>b.onclick=()=>{answers[step-1]=+b.dataset.i;render()});bar.style.width=(step/total*100)+"%";back.style.visibility=step>1?"visible":"hidden";next.style.visibility="visible";next.textContent=step===total?t.finish:t.next}
-function showResult(){const t=I[lang],idx=answers.slice(1),avg=idx.reduce((a,b)=>a+(b===undefined?3:[4,3,3,5,2,4][b]),0)/Math.max(1,idx.length),score=Math.round(Math.max(58,Math.min(93,100-avg*5)));let title,text;
-if(type==="bar"&&answers[2]!==undefined&&answers[2]<2){title={en:"weekday demand",es:"la demanda entre semana",ca:"la demanda entre setmana"}[lang];text={en:"Your opportunity may be to create a stronger reason to visit on quieter days — then build the offer, experience and campaign around it.",es:"Tu oportunidad puede estar en crear un motivo más fuerte para venir en los días flojos y construir alrededor la oferta, experiencia y campaña.",ca:"La teva oportunitat pot ser crear un motiu més fort per venir els dies fluixos i construir al voltant l'oferta, l'experiència i la campanya."}[lang]}
-else if(type==="gym"){title={en:"turning interest into memberships",es:"convertir interés en membresías",ca:"convertir interès en membresies"}[lang];text={en:"Your next move may be improving the journey from first impression to trial to membership.",es:"Tu siguiente paso puede ser mejorar el camino desde el primer contacto hasta la prueba y la membresía.",ca:"El teu següent pas pot ser millorar el camí des del primer contacte fins a la prova i la membresia."}[lang]}
-else if(type==="beauty"){title={en:"differentiation and trust",es:"diferenciación y confianza",ca:"diferenciació i confiança"}[lang];text={en:"Your opportunity may be turning your expertise and experience into a clearer reason to choose you.",es:"Tu oportunidad puede ser convertir tu experiencia y conocimiento en una razón más clara para elegirte.",ca:"La teva oportunitat pot ser convertir la teva experiència i coneixement en un motiu més clar per triar-te."}[lang]}
-else{title={en:"focus",es:"el foco",ca:"el focus"}[lang];text={en:"Your opportunity may be choosing one high-impact priority and aligning your brand and marketing around it.",es:"Tu oportunidad puede ser elegir una prioridad de alto impacto y alinear tu marca y marketing alrededor de ella.",ca:"La teva oportunitat pot ser triar una prioritat d'alt impacte i alinear la teva marca i màrqueting al seu voltant."}[lang]}
-qa.innerHTML='<div class="qmeta">AP INSIGHT</div><div class="question">'+({en:"Your next opportunity starts with one clear decision.",es:"Tu próxima oportunidad empieza con una decisión clara.",ca:"La teva pròxima oportunitat comença amb una decisió clara."}[lang])+'</div><div class="result-score">'+score+'</div><div class="result-label">'+({en:"growth readiness",es:"potencial de crecimiento",ca:"potencial de creixement"}[lang])+'</div><div class="insight">'+({en:"Your biggest opportunity is around ",es:"Tu mayor oportunidad está relacionada con ",ca:"La teva major oportunitat està relacionada amb "}[lang])+'<strong>'+title+'</strong>.</div><p class="result-note">'+text+'</p><div class="result-actions"><a class="btn" href="mailto:info@apstudio.com?subject=AP%20Growth%20Blueprint">'+({en:"TALK TO AP →",es:"HABLAR CON AP →",ca:"PARLAR AMB AP →"}[lang])+'</a><button class="btn secondary" id="again">'+({en:"RUN AGAIN",es:"REPETIR",ca:"TORNAR-HO A FER"}[lang])+'</button></div>';next.style.visibility="hidden";back.style.visibility="hidden";bar.style.width="100%";$("#again").onclick=()=>{type="";answers=[];step=0;render()}}
-next.onclick=()=>{if(answers[step-1]===undefined)return;if(step===questions.length){showResult();return}step++;render()};back.onclick=()=>{if(step>1){step--;render()}};
-$("#start").onclick=openDiag;$("#start2").onclick=openDiag;$("#close").onclick=closeDiag;overlay.onclick=e=>{if(e.target===overlay)closeDiag()};document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(overlay.classList.contains("open"))closeDiag();else if(nav.classList.contains("open"))setMenu(false)}});
-const menuBtn=document.getElementById("menu");
-const nav=document.getElementById("nav");
-function setMenu(open){
-  nav.classList.toggle("open",open);
-  menuBtn.setAttribute("aria-expanded",open?"true":"false");
-  menuBtn.setAttribute("aria-label",open?"Close menu":"Open menu");
-  menuBtn.textContent=open?"×":"☰";
-  document.body.style.overflow=open?"hidden":"";
+
+const state={
+  lang:localStorage.getItem("ap_lang")||"en",
+  menuOpen:false,diagOpen:false,type:"",questions:[],answers:[],step:-1
+};
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const menuBtn=$("#menu"),nav=$("#nav"),overlay=$("#overlay"),diag=$(".diag"),qa=$("#qa"),bar=$("#bar"),nextBtn=$("#next"),backBtn=$("#back"),closeBtn=$("#close");
+
+function lockPage(locked){
+ document.documentElement.classList.toggle("ap-lock",locked);
+ document.body.classList.toggle("ap-lock",locked);
 }
-menuBtn.onclick=()=>setMenu(!nav.classList.contains("open"));
-nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
-nav.addEventListener("click",e=>{if(e.target===nav)setMenu(false)});
+function setMenu(open){
+ state.menuOpen=!!open;
+ nav.classList.toggle("open",state.menuOpen);
+ menuBtn.textContent=state.menuOpen?"×":"☰";
+ menuBtn.setAttribute("aria-expanded",state.menuOpen?"true":"false");
+ menuBtn.setAttribute("aria-label",state.menuOpen?"Close menu":"Open menu");
+ lockPage(state.menuOpen||state.diagOpen);
+}
+function closeMenu(){setMenu(false)}
+function applyLanguage(){
+ const t=I[state.lang];document.documentElement.lang=state.lang;
+ $$("[data-k]").forEach(el=>{const k=el.dataset.k;if(t[k]!==undefined)el.innerHTML=t[k]});
+ $$("[data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===state.lang));
+ if(state.diagOpen)(state.step===-1?renderBusiness:renderQuestion)();
+}
+function setLanguage(next){
+ if(!I[next])return;state.lang=next;localStorage.setItem("ap_lang",next);applyLanguage();
+}
+$$("[data-lang]").forEach(b=>b.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();setLanguage(b.dataset.lang)}));
+menuBtn.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();setMenu(!state.menuOpen)});
+$$("nav a").forEach(a=>a.addEventListener("click",closeMenu));
 
-const growthCard=document.getElementById("growthCard");
-if(growthCard && "IntersectionObserver" in window){
- const growthObserver=new IntersectionObserver(entries=>{
-   entries.forEach(entry=>{
-     if(entry.isIntersecting){growthCard.classList.add("animate");growthObserver.disconnect();}
-   });
- },{threshold:.25});
- growthObserver.observe(growthCard);
-}else if(growthCard){growthCard.classList.add("animate");}
-
+function openDiag(){
+ closeMenu();state.diagOpen=true;state.type="";state.questions=[];state.answers=[];state.step=-1;
+ overlay.classList.add("open");overlay.setAttribute("aria-hidden","false");lockPage(true);renderBusiness();
+ requestAnimationFrame(()=>diag.scrollTop=0);
+}
+function closeDiag(){
+ state.diagOpen=false;overlay.classList.remove("open");overlay.setAttribute("aria-hidden","true");lockPage(state.menuOpen);
+}
+function buildQuestions(){
+ const q=Q[state.lang];state.questions=[...(q[state.type]||q.other),...q.common];state.answers=new Array(state.questions.length);
+}
+function makeButton(text,cls="option"){
+ const b=document.createElement("button");b.type="button";b.className=cls;b.innerHTML=text;return b;
+}
+function renderBusiness(){
+ const t=I[state.lang];qa.innerHTML="";
+ const meta=document.createElement("div");meta.className="qmeta";meta.textContent="01 / 01";
+ const question=document.createElement("div");question.className="question";question.textContent=t.business;
+ const options=document.createElement("div");options.className="options";
+ t.biz.forEach((label,i)=>{
+  const type=["beauty","gym","bar","lifestyle","other"][i];
+  const b=makeButton(`<span>${label}</span><small>→</small>`);
+  b.addEventListener("click",()=>{state.type=type;buildQuestions();state.step=0;renderQuestion()});
+  options.appendChild(b);
+ });
+ qa.append(meta,question,options);bar.style.width="0%";nextBtn.style.visibility="hidden";nextBtn.disabled=true;backBtn.style.visibility="hidden";
+}
+function renderQuestion(){
+ const q=state.questions[state.step];if(!q)return;
+ const total=state.questions.length,selected=state.answers[state.step];qa.innerHTML="";
+ const meta=document.createElement("div");meta.className="qmeta";meta.textContent=`${String(state.step+1).padStart(2,"0")} / ${String(total).padStart(2,"0")}`;
+ const question=document.createElement("div");question.className="question";question.textContent=q[0];
+ const options=document.createElement("div");options.className="options";
+ q[1].forEach((label,i)=>{
+  const b=makeButton(`<span>${label}</span><small>${selected===i?"✓":"→"}</small>`,`option${selected===i?" selected":""}`);
+  b.addEventListener("click",()=>{
+   state.answers[state.step]=i;
+   options.querySelectorAll(".option").forEach((el,n)=>{const chosen=n===i;el.classList.toggle("selected",chosen);const mark=el.querySelector("small");if(mark)mark.textContent=chosen?"✓":"→"});
+   nextBtn.disabled=false;
+  });
+  options.appendChild(b);
+ });
+ qa.append(meta,question,options);bar.style.width=`${((state.step+1)/total)*100}%`;backBtn.style.visibility="visible";nextBtn.style.visibility="visible";nextBtn.disabled=selected===undefined;nextBtn.textContent=state.step===total-1?I[state.lang].finish:I[state.lang].next;
+ requestAnimationFrame(()=>diag.scrollTop=0);
+}
+function goNext(){
+ if(state.step<0||state.answers[state.step]===undefined)return;
+ if(state.step<state.questions.length-1){state.step++;renderQuestion()}else showResult();
+}
+function goBack(){
+ if(state.step<0)return;
+ if(state.step===0){state.step=-1;renderBusiness()}else{state.step--;renderQuestion()}
+}
+function showResult(){
+ const lang=state.lang,answers=state.answers,weights=[4,3,3,5,2,4];
+ const avg=answers.reduce((sum,v)=>sum+(v===undefined?3:weights[v]),0)/Math.max(1,answers.length);
+ const score=Math.round(Math.max(58,Math.min(93,100-avg*5)));
+ let title,text;
+ if(state.type==="bar"&&answers[1]!==undefined&&answers[1]<2){
+  title={en:"weekday demand",es:"la demanda entre semana",ca:"la demanda entre setmana"}[lang];
+  text={en:"Your opportunity may be to create a stronger reason to visit on quieter days — then build the offer, experience and campaign around it.",es:"Tu oportunidad puede estar en crear un motivo más fuerte para venir en los días flojos y construir alrededor la oferta, experiencia y campaña.",ca:"La teva oportunitat pot ser crear un motiu més fort per venir els dies fluixos i construir al voltant l'oferta, l'experiència i la campanya."}[lang];
+ }else if(state.type==="gym"){
+  title={en:"turning interest into memberships",es:"convertir interés en membresías",ca:"convertir interès en membresies"}[lang];
+  text={en:"Your next move may be improving the journey from first impression to trial to membership.",es:"Tu siguiente paso puede ser mejorar el camino desde el primer contacto hasta la prueba y la membresía.",ca:"El teu següent pas pot ser millorar el camí des del primer contacte fins a la prova i la membresia."}[lang];
+ }else if(state.type==="beauty"){
+  title={en:"differentiation and trust",es:"diferenciación y confianza",ca:"diferenciació i confiança"}[lang];
+  text={en:"Your opportunity may be turning your expertise and experience into a clearer reason to choose you.",es:"Tu oportunidad puede ser convertir tu experiencia y conocimiento en una razón más clara para elegirte.",ca:"La teva oportunitat pot ser convertir la teva experiència i coneixement en un motiu més clar per triar-te."}[lang];
+ }else{
+  title={en:"focus",es:"el foco",ca:"el focus"}[lang];
+  text={en:"Your opportunity may be choosing one high-impact priority and aligning your brand and marketing around it.",es:"Tu oportunidad puede ser elegir una prioridad de alto impacto y alinear tu marca y marketing alrededor de ella.",ca:"La teva oportunitat pot ser triar una prioritat d'alt impacte i alinear la teva marca i màrqueting al seu voltant."}[lang];
+ }
+ const heading={en:"Your next opportunity starts with one clear decision.",es:"Tu próxima oportunidad empieza con una decisión clara.",ca:"La teva pròxima oportunitat comença amb una decisió clara."}[lang];
+ const label={en:"growth readiness",es:"potencial de crecimiento",ca:"potencial de creixement"}[lang];
+ const intro={en:"Your biggest opportunity is around ",es:"Tu mayor oportunidad está relacionada con ",ca:"La teva major oportunitat està relacionada amb "}[lang];
+ const talk={en:"TALK TO AP →",es:"HABLAR CON AP →",ca:"PARLAR AMB AP →"}[lang];
+ const again={en:"RUN AGAIN",es:"REPETIR",ca:"TORNAR-HO A FER"}[lang];
+ qa.innerHTML=`<div class="qmeta">AP INSIGHT</div><div class="question">${heading}</div><div class="result-score">${score}</div><div class="result-label">${label}</div><div class="insight">${intro}<strong>${title}</strong>.</div><p class="result-note">${text}</p><div class="result-actions"><a class="btn" href="mailto:info@apstudio.com?subject=AP%20Growth%20Blueprint">${talk}</a><button class="btn secondary" type="button" id="again">${again}</button></div>`;
+ nextBtn.style.visibility="hidden";backBtn.style.visibility="hidden";bar.style.width="100%";
+ $("#again").addEventListener("click",()=>{state.type="";state.questions=[];state.answers=[];state.step=-1;renderBusiness()});
+}
+$("#start")?.addEventListener("click",openDiag);$("#start2")?.addEventListener("click",openDiag);
+closeBtn?.addEventListener("click",closeDiag);nextBtn?.addEventListener("click",goNext);backBtn?.addEventListener("click",goBack);
+overlay?.addEventListener("click",e=>{if(e.target===overlay)closeDiag()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(state.diagOpen)closeDiag();else if(state.menuOpen)closeMenu()}});
+applyLanguage();overlay?.setAttribute("aria-hidden","true");
 </script>
 </body></html>
+
+
+
+
+<style id="ap-final-system">
+html,body{width:100%;min-height:100%;overflow-x:hidden}
+html.ap-lock,body.ap-lock{overflow:hidden!important;overscroll-behavior:none!important}
+button,a{touch-action:manipulation}
+.option{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.option.selected{border-color:rgba(215,181,109,.75)!important;background:rgba(215,181,109,.09)!important;transform:none!important}
+@media(max-width:720px){
+ header.wrap{width:100%;height:64px;padding:0 16px;box-sizing:border-box;z-index:1000}
+ main{padding-top:64px!important}
+ .mobile-langs{display:flex!important;align-items:center;gap:2px;margin-left:auto;margin-right:8px;z-index:1002}
+ .mobile-langs button{border:0;background:transparent;color:#777;font-size:10px;letter-spacing:.08em;padding:7px 5px}
+ .mobile-langs button.active{color:var(--gold);font-weight:800}
+ .menu{display:grid!important;place-items:center;position:relative;z-index:1003;width:40px;height:40px;padding:0;border:1px solid rgba(255,255,255,.13);border-radius:50%;background:#0b0b0b;color:#fff;font-size:22px;line-height:1}
+ nav#nav{display:none!important;position:fixed!important;top:64px!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:calc(100dvh - 64px)!important;box-sizing:border-box;z-index:999!important;margin:0!important;padding:30px 26px 28px!important;background:#080808!important;border:0!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+ nav#nav.open{display:flex!important}
+ nav#nav a{display:block;padding:18px 0!important;font-size:clamp(30px,9vw,52px)!important;line-height:1!important;font-weight:700!important;letter-spacing:-.045em!important;color:#f4f1e9!important;border-bottom:1px solid var(--line)!important}
+ nav#nav .lang{display:flex!important;gap:8px!important;margin-top:24px!important}
+ nav#nav .lang button{border:1px solid var(--line);border-radius:999px;background:#0d0d0d;color:#8b877f;padding:10px 15px;font-size:10px}
+ nav#nav .lang button.active{color:var(--gold);border-color:rgba(215,181,109,.5)}
+ .hero{min-height:auto!important;padding:46px 0 62px!important}
+ .hero-actions{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+ .hero-actions a,.hero-actions button{width:100%;box-sizing:border-box}
+ .focus-grid{grid-template-columns:1fr 1fr!important}
+ .people{grid-template-columns:1fr!important}
+ .person img{width:min(78vw,300px)!important}
+ .overlay{position:fixed!important;inset:0!important;z-index:2000!important;display:none!important;align-items:center!important;justify-content:center!important;padding:10px!important;box-sizing:border-box;background:rgba(0,0,0,.82)!important;overscroll-behavior:contain;touch-action:none}
+ .overlay.open{display:flex!important}
+ .diag{width:min(100%,520px)!important;max-height:calc(100dvh - 20px)!important;overflow-y:auto!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-sizing:border-box;touch-action:pan-y}
+}
+@media(max-width:390px){header.wrap{padding:0 12px}.mobile-langs{margin-right:5px}.mobile-langs button{padding:6px 3px}.menu{width:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+</style>
