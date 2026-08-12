@@ -1,335 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#050505">
-<meta name="description" content="AP Studio — diagnose what is holding your business back, then build what it needs to move forward.">
-<title>AP Studio — Diagnose. Transform. Grow.</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080808"><meta name="description" content="AP Studio — discover your next opportunity for growth.">
+<title>AP Studio — Discover what's next</title>
 <style>
-:root{
-  --black:#050505; --black2:#0b0b0a; --cream:#f0ede6; --cream2:#f8f6f0;
-  --sand:#d8c1a0; --sand2:#bca17a; --white:#fff; --muted:#88847b;
-  --line:#2b2a27; --lightline:#d5d0c5;
-  --serif:Georgia,"Times New Roman",serif;
-  --sans:Inter,Arial,Helvetica,sans-serif;
-  --ease:cubic-bezier(.2,.8,.2,1)
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--black);color:var(--white);font-family:var(--sans);-webkit-font-smoothing:antialiased}
-body.lock{overflow:hidden}
-a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
-::selection{background:var(--sand);color:var(--black)}
-.container{width:min(1240px,calc(100% - 72px));margin:auto}
-.eyebrow{font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-weight:800}
-.serif{font-family:var(--serif);font-weight:400}
-.gold{color:var(--sand)}
-.btn{border:1px solid transparent;border-radius:2px;padding:15px 21px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;transition:.3s var(--ease)}
-.btn-gold{background:var(--sand);color:#0b0b0a}.btn-gold:hover{background:#ead6b8;transform:translateY(-2px)}
-.btn-outline{background:transparent;border-color:#5b5851;color:#fff}.btn-outline:hover{border-color:var(--sand);color:var(--sand);transform:translateY(-2px)}
-.btn-black{background:var(--black);color:#fff}
-
-/* NAV */
-.nav{position:fixed;z-index:100;top:0;left:0;right:0;height:74px;border-bottom:1px solid rgba(255,255,255,.09);background:rgba(5,5,5,.35);backdrop-filter:blur(10px)}
-.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:28px;font-weight:800;letter-spacing:-.09em;line-height:.7}.logo small{display:block;font-size:7px;letter-spacing:.16em;font-weight:500;margin-top:8px;margin-left:2px}
-.nav-links{display:flex;gap:30px;align-items:center;font-size:9px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
-.nav-links a{opacity:.7;transition:.2s}.nav-links a:hover{opacity:1;color:var(--sand)}
-.nav-cta{background:var(--sand);color:#080807;border:0;padding:14px 19px;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
-.menu{display:none;border:1px solid #44423d;background:transparent;color:#fff;width:40px;height:40px}
-
-/* HERO */
-.hero{min-height:100svh;position:relative;overflow:hidden;background:var(--black);display:flex;align-items:flex-end;padding:150px 0 58px}
-.hero-art{position:absolute;inset:0;pointer-events:none}
-.hero-circle{position:absolute;width:min(54vw,730px);aspect-ratio:1;border-radius:50%;right:8vw;top:14vh;background:radial-gradient(circle at 38% 32%,#77736b,#3b3935 42%,#171715 68%,#080808 72%);filter:contrast(1.05)}
-.hero-circle:before{content:"";position:absolute;inset:11%;border-radius:50%;border:1px solid rgba(216,193,160,.28)}
-.hero-circle:after{content:"";position:absolute;width:47%;height:62%;right:-3%;top:13%;background:linear-gradient(145deg,#1c1b18,#060606);border:1px solid #292823;box-shadow:-20px 25px 60px #000}
-.hero-block{position:absolute;right:18vw;bottom:8vh;width:120px;height:165px;background:#090908;border:1px solid #262521;transform:skewY(-4deg);box-shadow:20px 30px 70px #000}
-.hero-ridged{position:absolute;right:33vw;top:22vh;width:75px;height:300px;background:repeating-linear-gradient(90deg,#2d2c28 0,#2d2c28 2px,#111 2px,#111 7px);opacity:.8;transform:skewY(-4deg)}
-.hero-content{position:relative;z-index:2;width:100%}
-.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:60px;align-items:end}
-.hero h1{font-size:clamp(62px,9.1vw,142px);line-height:.82;letter-spacing:-.085em;font-weight:800;margin:22px 0 30px;max-width:900px;text-transform:uppercase}
-.hero h1 .thin{font-weight:400}.hero h1 .serif{font-family:var(--serif);text-transform:none;font-weight:400}
-.hero-copy{max-width:480px;font-size:13px;line-height:1.65;color:#b1aea6}
-.hero-side{align-self:end}.hero-side-title{font-size:13px;letter-spacing:.02em;margin-bottom:13px}.hero-side p{font-size:10px;line-height:1.65;color:#8d8a82;max-width:230px;margin:0 0 22px}.hero-meta{display:flex;gap:17px;flex-wrap:wrap;margin-top:25px;color:#8e8b83;font-size:8px;letter-spacing:.12em;text-transform:uppercase}.hero-meta span:before{content:"";width:5px;height:5px;background:var(--sand);display:inline-block;border-radius:50%;margin-right:6px}
-
-/* STRIP */
-.strip{background:var(--cream);color:var(--black);border-top:1px solid #222;border-bottom:1px solid #222;padding:25px 0}.strip-grid{display:grid;grid-template-columns:repeat(4,1fr)}.strip-item{display:flex;gap:13px;align-items:center;padding:0 22px;border-right:1px solid #c9c4b9}.strip-item:first-child{padding-left:0}.strip-item:last-child{border:0}.strip-num{font-family:var(--serif);font-size:16px}.strip-text{font-size:9px;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
-
-/* COMMON */
-section{padding:115px 0}.light{background:var(--cream);color:var(--black)}.dark{background:var(--black);color:#fff}
-.section-head{display:flex;justify-content:space-between;gap:50px;align-items:flex-end;margin-bottom:58px}.section-head h2{font-size:clamp(47px,6.5vw,84px);line-height:.85;letter-spacing:-.07em;font-weight:700;text-transform:uppercase;margin:0;max-width:850px}.section-head h2 .serif{text-transform:none;font-weight:400}.section-head p{max-width:330px;color:var(--muted);font-size:11px;line-height:1.7;margin:0}
-
-/* MODEL */
-.model-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--lightline);border-left:1px solid var(--lightline)}.model-card{min-height:360px;padding:30px;border-right:1px solid var(--lightline);border-bottom:1px solid var(--lightline);display:flex;flex-direction:column;justify-content:space-between}.model-num{font-family:var(--serif);font-size:17px}.model-card h3{font-size:32px;letter-spacing:-.06em;text-transform:uppercase;margin:15px 0 9px}.model-card p{font-size:11px;line-height:1.7;color:#77736a;max-width:310px;margin:0}.model-arrow{font-size:23px;color:#8f8a80}
-
-/* DARK CAPABILITIES */
-.cap-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}.cap{display:grid;grid-template-columns:58px 1fr;gap:18px;padding:31px 0;border-bottom:1px solid var(--line)}.cap:nth-child(odd){border-right:1px solid var(--line);padding-right:45px}.cap:nth-child(even){padding-left:45px}.cap-num{font-family:var(--serif);font-size:16px;color:#8b877f}.cap h3{font-size:22px;letter-spacing:-.035em;text-transform:uppercase;margin:0 0 9px}.cap p{font-size:11px;line-height:1.7;color:#87837b;max-width:410px;margin:0}
-
-/* DIAGNOSTIC */
-.diagnostic{background:var(--cream);color:var(--black);position:relative;overflow:hidden}.diagnostic:after{content:"AP";position:absolute;right:-4vw;bottom:-8vw;font-size:46vw;line-height:.7;font-weight:900;letter-spacing:-.13em;color:#d8d1c5;opacity:.25;pointer-events:none}
-.diag-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr .75fr;gap:80px;align-items:end}.diag-title{font-size:clamp(55px,8.2vw,115px);line-height:.8;letter-spacing:-.08em;font-weight:800;text-transform:uppercase;margin:18px 0 28px}.diag-title .serif{text-transform:none;font-weight:400}.diag-copy{max-width:520px;font-size:13px;line-height:1.7;color:#6f6b63}.diag-facts{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.13em}.diag-facts span:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--sand2);margin-right:6px}.diag-card{background:var(--black);color:#fff;padding:29px;min-height:320px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:18px 20px 0 rgba(180,160,130,.25)}.diag-card-top{display:flex;justify-content:space-between}.diag-card .score-demo{width:142px;height:142px;border-radius:50%;border:1px solid #4c4840;display:grid;place-items:center;margin:15px 0}.score-demo-inner{text-align:center}.score-demo strong{display:block;font-size:48px;letter-spacing:-.08em}.score-demo small{font-size:8px;color:#88847b;letter-spacing:.1em}.diag-card h3{font-size:21px;text-transform:uppercase;letter-spacing:-.04em;margin:0 0 7px}.diag-card p{font-size:10px;line-height:1.6;color:#89867e;margin:0;max-width:260px}
-
-/* PROCESS */
-.process{background:var(--black);color:#fff}.process-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}.process-item{min-height:230px;padding:27px 22px 27px 0;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}.process-item:not(:first-child){padding-left:22px}.process-item:last-child{border-right:0}.process-num{font-family:var(--serif);color:#9a958c;font-size:17px}.process-item h3{font-size:20px;text-transform:uppercase;letter-spacing:-.035em;margin:44px 0 9px}.process-item p{font-size:10px;line-height:1.7;color:#89867e;margin:0;max-width:205px}
-
-/* STATEMENT */
-.statement{background:#0a0a09;color:#fff;padding:125px 0}.statement h2{font-size:clamp(53px,8vw,108px);line-height:.82;letter-spacing:-.08em;font-weight:800;text-transform:uppercase;margin:18px 0 60px;max-width:1050px}.statement h2 .serif{text-transform:none;font-weight:400}.statement-foot{border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;gap:40px}.statement-foot p{font-size:10px;line-height:1.7;color:#858179;max-width:390px;margin:0}
-
-/* CONTACT */
-.contact{background:var(--cream);color:var(--black)}.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:80px}.contact h2{font-size:clamp(52px,7vw,94px);line-height:.82;letter-spacing:-.08em;text-transform:uppercase;margin:18px 0 23px}.contact h2 .serif{text-transform:none;font-weight:400}.contact p{font-size:12px;line-height:1.7;color:#706c64;max-width:500px}.contact-links{align-self:end}.contact-link{display:flex;justify-content:space-between;border-top:1px solid var(--lightline);padding:15px 0;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800}.contact-link:last-child{border-bottom:1px solid var(--lightline)}.contact-link span:last-child{font-family:var(--serif);font-size:17px}
-
-/* FOOTER */
-footer{background:var(--black);color:#fff;padding:48px 0 22px}.footer-top{display:flex;justify-content:space-between}.footer-big{font-size:clamp(50px,7.5vw,105px);line-height:.82;letter-spacing:-.08em;font-weight:800;text-transform:uppercase;margin:75px 0 90px}.footer-big .serif{text-transform:none;font-weight:400}.footer-bottom{border-top:1px solid var(--line);padding-top:17px;display:flex;justify-content:space-between;color:#66635c;font-size:8px;letter-spacing:.12em;text-transform:uppercase}
-
-/* DIAGNOSTIC APP */
-.modal{position:fixed;z-index:200;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(15px);display:none;align-items:center;justify-content:center;padding:12px}.modal.open{display:flex}.app{width:min(1040px,100%);height:min(92svh,830px);background:var(--cream);color:var(--black);border-radius:2px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 35px 120px rgba(0,0,0,.55)}
-.app-head{height:68px;flex:0 0 68px;background:var(--black);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:0 20px 0 25px}.app-logo{font-size:15px;font-weight:900;letter-spacing:-.05em}.app-logo span{font-weight:400;color:#858179}.app-right{display:flex;align-items:center;gap:15px}.count{font-size:8px;letter-spacing:.16em;color:#99958d;font-weight:800}.close{width:38px;height:38px;border:1px solid #44413b;background:transparent;color:#fff;font-size:20px}.progress{height:3px;background:#d7d2c8}.progress i{height:100%;width:0;display:block;background:var(--sand);transition:.4s var(--ease)}.app-body{overflow:auto;flex:1}.question{min-height:100%;display:flex;flex-direction:column;justify-content:center;padding:55px clamp(23px,7vw,80px)}.qcat{display:flex;gap:9px;align-items:center;color:#77736a;margin-bottom:18px}.qdot{width:5px;height:5px;background:var(--sand2);border-radius:50%}.qtitle{font-size:clamp(34px,5vw,60px);line-height:.9;letter-spacing:-.065em;font-weight:800;text-transform:uppercase;max-width:820px;margin:0 0 36px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:9px;max-width:900px}.answer{border:1px solid #d4cfc5;background:transparent;border-radius:0;text-align:left;min-height:94px;padding:18px;transition:.25s var(--ease)}.answer:hover{border-color:var(--black);background:#e7e2d8;transform:translateY(-2px)}.answer-head{display:flex;gap:11px;align-items:flex-start}.letter{width:23px;height:23px;border:1px solid #bdb7ab;display:grid;place-items:center;font-size:8px;font-weight:900;flex:0 0 23px}.answer strong{font-size:11px;line-height:1.45}.answer small{display:block;margin:8px 0 0 34px;color:#77736a;font-size:9px;line-height:1.5}.qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:24px}.back{border:0;background:none;color:#77736a;font-size:8px;letter-spacing:.13em;text-transform:uppercase;font-weight:800}.hint{font-size:8px;color:#77736a;letter-spacing:.12em;text-transform:uppercase}
-
-/* RESULTS */
-.results{display:none;padding:clamp(30px,6vw,66px)}.result-top{display:grid;grid-template-columns:220px 1fr;gap:45px;align-items:center}.score-label{color:#77736a;margin-bottom:12px}.score{font-size:108px;line-height:.7;letter-spacing:-.11em;font-weight:800}.score span{font-size:16px;letter-spacing:0;color:#77736a;margin-left:6px}.result-title{font-size:clamp(34px,4.6vw,54px);line-height:.88;letter-spacing:-.06em;font-weight:800;text-transform:uppercase;margin:0 0 14px}.result-intro{font-size:11px;line-height:1.7;color:#77736a;max-width:600px;margin:0}.result-columns{display:grid;grid-template-columns:1fr 1fr;gap:45px;margin-top:55px}.result-label{font-size:8px;letter-spacing:.16em;text-transform:uppercase;font-weight:900;margin:0 0 19px}.scores{display:grid;gap:13px}.score-row{display:grid;grid-template-columns:120px 1fr 30px;gap:11px;align-items:center;font-size:9px}.bar{height:6px;background:#d8d2c8}.bar i{height:100%;display:block;background:var(--black)}.score-row b{text-align:right}.gaps{border-top:1px solid #d5d0c5}.gap{display:grid;grid-template-columns:30px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid #d5d0c5}.gap-num{font-family:var(--serif);font-size:16px}.gap h4{font-size:16px;text-transform:uppercase;letter-spacing:-.03em;margin:0 0 6px}.gap p{font-size:9px;line-height:1.6;color:#77736a;margin:0}.priority{background:var(--black);color:#fff;margin-top:40px;padding:27px}.priority h3{font-size:26px;text-transform:uppercase;letter-spacing:-.05em;margin:9px 0}.priority p{font-size:10px;line-height:1.65;color:#8b877f;max-width:650px;margin:0 0 19px}.priority .btn{border:0}.result-actions{display:flex;gap:8px;flex-wrap:wrap}.result-note{font-size:7px;color:#67645e;text-transform:uppercase;letter-spacing:.12em;margin-top:14px}
-
-/* CONTACT MODAL */
-.contact-modal{position:fixed;z-index:220;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:14px}.contact-modal.open{display:flex}.contact-box{width:min(620px,100%);background:var(--cream);color:var(--black);padding:32px}.contact-box h3{font-size:42px;line-height:.85;letter-spacing:-.07em;text-transform:uppercase;margin:14px 0}.contact-box p{font-size:11px;color:#77736a;line-height:1.65;max-width:500px}.form{display:grid;gap:9px;margin-top:22px}.form input,.form textarea{width:100%;border:1px solid #d3cec3;background:transparent;padding:13px;font:inherit;font-size:11px;outline:none}.form textarea{min-height:115px;resize:vertical}.form-actions{display:flex;justify-content:space-between;align-items:center;gap:15px}.form-note{font-size:7px;color:#77736a;line-height:1.4}.close-link{border:0;background:none;font-size:8px;color:#77736a;letter-spacing:.13em;text-transform:uppercase;font-weight:800;margin-top:15px}.toast{position:fixed;z-index:300;left:50%;bottom:20px;transform:translate(-50%,20px);opacity:0;background:#111;color:#fff;padding:11px 16px;font-size:9px;border-radius:2px;transition:.3s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
-
-/* RESPONSIVE */
-@media(max-width:900px){
- .nav-links{display:none}.nav-cta{display:none}.menu{display:block}
- .hero-grid,.diag-grid,.contact-grid{grid-template-columns:1fr}.hero-side{display:none}.diag-grid{gap:45px}.diag-card{min-height:280px}
- .model-grid{grid-template-columns:1fr}.model-card{min-height:280px}
- .process-grid{grid-template-columns:1fr 1fr}.process-item:nth-child(2){border-right:0}.process-item:nth-child(3){padding-left:0}.process-item:nth-child(4){border-right:0}
- .result-top{grid-template-columns:1fr;gap:30px}.result-columns{grid-template-columns:1fr}
-}
-@media(max-width:620px){
- .container{width:calc(100% - 30px)}.nav{height:65px}.logo{font-size:24px}
- .hero{padding:120px 0 45px}.hero h1{font-size:clamp(55px,16vw,82px)}.hero-copy{font-size:12px}.hero-art .hero-circle{width:90vw;right:-37vw;top:21vh}.hero-ridged{right:34vw;top:28vh;height:230px}.hero-block{right:13vw;bottom:11vh;width:90px;height:125px}
- .hero-meta{gap:12px}.strip{padding:0}.strip-grid{grid-template-columns:1fr 1fr}.strip-item{padding:18px 12px;border-bottom:1px solid #c9c4b9}.strip-item:nth-child(2){border-right:0}.strip-item:nth-child(3){padding-left:0}.strip-item:nth-child(3),.strip-item:nth-child(4){border-bottom:0}
- section{padding:78px 0}.section-head{display:block;margin-bottom:40px}.section-head p{margin-top:22px}
- .cap-grid{grid-template-columns:1fr}.cap{padding:26px 0!important;border-right:0!important}.cap h3{font-size:19px}
- .diag-title{font-size:clamp(52px,15.5vw,78px)}.diag-card{box-shadow:12px 12px 0 rgba(180,160,130,.22)}
- .process-grid{grid-template-columns:1fr}.process-item,.process-item:not(:first-child){padding:25px 0;border-right:0}.process-item h3{margin-top:30px}
- .statement{padding:86px 0}.statement-foot{display:block}.statement-foot p{margin-top:15px}
- .footer-top{display:block}.footer-top .eyebrow{margin-top:11px}.footer-big{margin:65px 0 70px}.footer-bottom{display:block;line-height:1.8}
- .modal{padding:0}.app{height:100svh}.app-head{height:61px;flex-basis:61px;padding:0 13px 0 17px}.question{justify-content:flex-start;padding:37px 17px 28px}.qtitle{font-size:clamp(31px,9vw,45px);margin-bottom:27px}.answers{grid-template-columns:1fr}.answer{min-height:74px;padding:15px}.answer small{margin-top:6px}.qfoot{margin-top:20px}
- .results{padding:29px 17px 48px}.score{font-size:84px}.result-columns{margin-top:42px;gap:39px}.score-row{grid-template-columns:105px 1fr 27px}.priority{padding:22px}.priority h3{font-size:23px}
- .contact-box{padding:27px 19px}.contact-box h3{font-size:36px}.form-actions{display:block}.form-actions .btn{width:100%;margin-top:12px}
-}
+:root{--bg:#080808;--text:#f4f1e9;--muted:#99968e;--line:#242424;--gold:#d7b56d;--gold2:#f0d79a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+button,a{font:inherit}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}
+header{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.logo{font-weight:800;letter-spacing:.14em;font-size:14px}
+nav{display:flex;align-items:center;gap:26px;color:#aaa;font-size:12px}nav a:hover{color:#fff}.lang{display:flex;gap:5px;margin-left:5px}.lang button,.menu{border:0;background:none;color:#777;padding:4px;cursor:pointer;font-size:11px}.lang .active{color:var(--gold);font-weight:800}.menu{display:none;font-size:23px;color:#fff}
+.hero{min-height:calc(100svh - 72px);display:grid;place-items:center;text-align:center;padding:54px 0}.hero-inner{max-width:900px}.eyebrow,.kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:clamp(48px,8vw,92px);line-height:.92;letter-spacing:-.06em;margin:22px 0 25px;font-weight:760}.hero p{max-width:660px;margin:auto;color:var(--muted);font-size:17px;line-height:1.65}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:32px}.btn{border:1px solid var(--gold);background:var(--gold);color:#080808;border-radius:999px;padding:13px 20px;font-size:12px;font-weight:800;cursor:pointer;transition:.2s}.btn:hover{background:var(--gold2);transform:translateY(-1px)}.btn.secondary{background:transparent;color:#eee;border-color:var(--line)}
+.meta{margin-top:19px;display:flex;justify-content:center;gap:22px;flex-wrap:wrap;color:#696761;font-size:10px;letter-spacing:.09em}.meta span:before{content:"·";color:var(--gold);margin-right:8px}.meta span:first-child:before{display:none}
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:17px 0;color:#696761;font-size:10px;letter-spacing:.16em}.strip-inner{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.section{padding:62px 0}.two{display:grid;grid-template-columns:1fr 1.6fr;gap:50px}.section h2{font-size:clamp(32px,5vw,54px);line-height:1;letter-spacing:-.05em;margin:12px 0 16px}.lead{color:var(--muted);line-height:1.7;max-width:650px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.card{border:1px solid var(--line);border-radius:18px;padding:21px;background:linear-gradient(145deg,#121212,#0d0d0d)}.num{color:var(--gold);font-size:10px;letter-spacing:.15em}.card h3{margin:34px 0 8px;font-size:17px}.card p{margin:0;color:#85827b;font-size:12px;line-height:1.55}.center{text-align:center}.center .lead{margin:auto}
+footer{border-top:1px solid var(--line);padding:22px 0;color:#66635d;font-size:11px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.82);backdrop-filter:blur(12px);display:none;padding:10px}.overlay.open{display:grid;place-items:center}.diag{width:min(750px,100%);max-height:calc(100svh - 20px);overflow:auto;background:#0d0d0d;border:1px solid var(--line);border-radius:23px;padding:25px;box-shadow:0 30px 90px #000}
+.diaghead{display:flex;justify-content:space-between;gap:15px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}.diagtitle{font-size:23px;letter-spacing:-.03em}.close{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#151515;color:#aaa;cursor:pointer}
+.progress{height:3px;background:#222;margin:19px 0 26px}.bar{height:100%;width:0;background:var(--gold);transition:.25s}.qmeta{color:#706d66;font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}.question{font-size:clamp(27px,4vw,40px);line-height:1.06;letter-spacing:-.045em;margin-bottom:23px}.options{display:grid;gap:8px}.option{width:100%;text-align:left;border:1px solid var(--line);background:#121212;color:#eee;border-radius:13px;padding:14px 15px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}.option:hover,.option.selected{border-color:var(--gold);background:#17150f}.option small{color:#777}
+.diagfoot{display:flex;justify-content:space-between;align-items:center;margin-top:21px}.back{border:0;background:none;color:#777;cursor:pointer}.result-score{font-size:clamp(68px,12vw,108px);line-height:.9;color:var(--gold);letter-spacing:-.07em;margin:18px 0}.result-label{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:#777}.insight{border-left:2px solid var(--gold);padding:4px 0 4px 16px;margin:22px 0;font-size:19px;line-height:1.45}.result-note{color:#99958d;font-size:14px;line-height:1.65}.result-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+@media(max-width:720px){.wrap{width:calc(100% - 26px)}header{height:65px}.menu{display:block}nav{display:none;position:absolute;top:65px;left:13px;right:13px;padding:9px;background:#101010;border:1px solid var(--line);border-radius:15px;z-index:20;flex-direction:column;align-items:stretch;gap:2px}nav.open{display:flex}nav a{padding:11px}.lang{margin:2px 0}.hero{min-height:calc(100svh - 65px);padding:38px 0 45px}h1{font-size:clamp(43px,13vw,66px)}.hero p{font-size:15px}.strip-inner{justify-content:flex-start;gap:12px 20px}.section{padding:46px 0}.two{grid-template-columns:1fr;gap:25px}.steps{grid-template-columns:1fr}.overlay{padding:7px}.diag{padding:19px;border-radius:19px;max-height:calc(100svh - 14px)}.question{font-size:28px}.option{padding:13px}.diagfoot{margin-top:16px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
-
-<nav class="nav" id="nav">
- <div class="container nav-inner">
-  <a class="logo" href="#top">AP.<small>STUDIO</small></a>
-  <div class="nav-links">
-   <a href="#about">About Us</a><a href="#capabilities">What We Do</a><a href="#work">Work</a><a href="#diagnostic">AP Finder</a><a href="#contact">Contact</a>
-  </div>
-  <button class="nav-cta" onclick="openDiagnostic()">Start AP Diagnostic →</button>
-  <button class="menu" onclick="openDiagnostic()" aria-label="Open AP Diagnostic">+</button>
- </div>
-</nav>
-
-<header class="hero" id="top">
- <div class="hero-art">
-  <div class="hero-circle"></div><div class="hero-ridged"></div><div class="hero-block"></div>
- </div>
- <div class="container hero-content">
-  <div class="hero-grid">
-   <div>
-    <div class="eyebrow">AP STUDIO / STRATEGY · CREATIVE · GROWTH</div>
-    <h1>Find out what's<br>holding your <span class="gold">business</span><br><span class="thin">back.</span></h1>
-    <p class="hero-copy">Not sure if you need a new website, a clearer strategy or better marketing? Don't guess. Start with the problem. AP diagnoses what is holding your business back — then we build what it actually needs.</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:25px"><button class="btn btn-gold" onclick="openDiagnostic()">Start AP Diagnostic →</button><a class="btn btn-outline" href="#about">Discover AP</a></div>
-    <div class="hero-meta"><span>10 questions</span><span>5 minutes</span><span>Free</span><span>No commitment</span></div>
-   </div>
-   <aside class="hero-side">
-    <div class="eyebrow gold">THE AP IDEA</div>
-    <div class="hero-side-title">Simple. Smart. Strategic.</div>
-    <p>We don't sell a list of services first. We find the business constraint, then bring the right capabilities together to solve it.</p>
-    <a class="eyebrow" href="#diagnostic">Explore AP Diagnostic →</a>
-   </aside>
-  </div>
- </div>
-</header>
-
-<div class="strip">
- <div class="container strip-grid">
-  <div class="strip-item"><div class="strip-num">01</div><div class="strip-text">Strategic thinking</div></div>
-  <div class="strip-item"><div class="strip-num">02</div><div class="strip-text">Creative excellence</div></div>
-  <div class="strip-item"><div class="strip-num">03</div><div class="strip-text">Business insight</div></div>
-  <div class="strip-item"><div class="strip-num">04</div><div class="strip-text">Focus on what matters</div></div>
- </div>
-</div>
-
-<section class="light" id="about">
- <div class="container">
-  <div class="section-head">
-   <div><div class="eyebrow">01 / ABOUT AP</div><h2>We don't start with the <span class="serif">deliverable.</span></h2></div>
-   <p>AP is a premium creative growth studio for ambitious businesses that know they can be better — but need clarity on what to fix first.</p>
-  </div>
-  <div class="model-grid">
-   <article class="model-card"><div class="model-num">01</div><div><h3>Diagnose</h3><p>Understand the gaps across your position, offer, brand, visibility, conversion and growth.</p></div><div class="model-arrow">↘</div></article>
-   <article class="model-card"><div class="model-num">02</div><div><h3>Transform</h3><p>Build the right combination of strategy, brand, digital and marketing based on the diagnosis.</p></div><div class="model-arrow">↘</div></article>
-   <article class="model-card"><div class="model-num">03</div><div><h3>Grow</h3><p>Keep improving the system once the foundations are right and the biggest opportunities are clear.</p></div><div class="model-arrow">↘</div></article>
-  </div>
- </div>
-</section>
-
-<section class="dark" id="capabilities">
- <div class="container">
-  <div class="section-head">
-   <div><div class="eyebrow gold">02 / WHAT WE DO</div><h2>Capabilities are <span class="serif">tools.</span><br>Problems are the <span class="serif">product.</span></h2></div>
-   <p>Strategy, branding, websites and marketing aren't packages you have to choose from. They're capabilities we use when the diagnosis says they are needed.</p>
-  </div>
-  <div class="cap-grid">
-   <article class="cap"><div class="cap-num">01</div><div><h3>Strategy & Positioning</h3><p>Define your position, audience, offer and reason-to-choose before adding more activity.</p></div></article>
-   <article class="cap"><div class="cap-num">02</div><div><h3>Brand & Communication</h3><p>Build the identity, messaging and point of view that make your strategy visible and memorable.</p></div></article>
-   <article class="cap"><div class="cap-num">03</div><div><h3>Website & Digital</h3><p>Create a digital experience that explains value quickly, builds trust and moves people toward action.</p></div></article>
-   <article class="cap"><div class="cap-num">04</div><div><h3>Marketing & Growth</h3><p>Connect the brand to campaigns, content and acquisition around the actual constraint.</p></div></article>
-  </div>
- </div>
-</section>
-
-<section class="diagnostic" id="diagnostic">
- <div class="container diag-grid">
-  <div>
-   <div class="eyebrow">03 / AP DIAGNOSTIC</div>
-   <h2 class="diag-title">Don't guess what your business <span class="serif">needs.</span></h2>
-   <p class="diag-copy">Answer ten smart questions about your business. AP maps your answers across six critical dimensions and gives you a clear diagnosis — what is working, where the biggest gap is and what we would look at first.</p>
-   <div class="diag-facts"><span>10 questions</span><span>6 dimensions</span><span>Instant diagnosis</span><span>Free</span></div>
-   <button class="btn btn-black" style="margin-top:27px" onclick="openDiagnostic()">Start AP Diagnostic →</button>
-  </div>
-  <div class="diag-card">
-   <div class="diag-card-top"><div class="eyebrow gold">YOUR OVERALL SCORE</div><div class="eyebrow" style="color:#77736b">AP DIAGNOSIS</div></div>
-   <div class="score-demo"><div class="score-demo-inner"><strong>68</strong><small>/100</small></div></div>
-   <div><h3>Your biggest gap: Positioning</h3><p>You have a strong foundation, but there are clear gaps holding your business back.</p></div>
-  </div>
- </div>
-</section>
-
-<section class="process" id="work">
- <div class="container">
-  <div class="section-head">
-   <div><div class="eyebrow gold">04 / THE AP PROCESS</div><h2>Simple. Smart. <span class="serif">Strategic.</span></h2></div>
-   <p style="color:#858179">The experience is simple for the client. Underneath, the thinking is focused on finding the real constraint and prioritising the right intervention.</p>
-  </div>
-  <div class="process-grid">
-   <article class="process-item"><div class="process-num">01</div><h3>Answer</h3><p>Tell us what is true about your business today.</p></article>
-   <article class="process-item"><div class="process-num">02</div><h3>Analyse</h3><p>We map your answers across six business dimensions.</p></article>
-   <article class="process-item"><div class="process-num">03</div><h3>Diagnose</h3><p>See your biggest gap, strongest foundation and priorities.</p></article>
-   <article class="process-item"><div class="process-num">04</div><h3>Recommend</h3><p>Then decide whether the answer is strategy, brand, digital, marketing — or a combination.</p></article>
-  </div>
- </div>
-</section>
-
-<section class="statement">
- <div class="container">
-  <div class="eyebrow gold">05 / THE AP PRINCIPLE</div>
-  <h2>You don't need <span class="serif">more stuff.</span><br>You need the <span class="serif">right things</span><br>working together.</h2>
-  <div class="statement-foot"><div class="eyebrow">AP STUDIO</div><p>We don't believe every business needs a new website, a rebrand or more marketing. We believe every business needs the right problem solved.</p></div>
- </div>
-</section>
-
-<section class="contact" id="contact">
- <div class="container contact-grid">
-  <div>
-   <div class="eyebrow">06 / LET'S CONNECT</div>
-   <h2>Not sure what you <span class="serif">need?</span></h2>
-   <p>Perfect. That's exactly where AP starts. Run the Diagnostic, or tell us what's happening in the business. We'll figure out the right next move together.</p>
-   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:25px"><button class="btn btn-black" onclick="openContact()">Talk to AP →</button><button class="btn btn-outline" onclick="openDiagnostic()">Run Diagnostic</button></div>
-  </div>
-  <div class="contact-links">
-   <a class="contact-link" href="#diagnostic"><span>AP Diagnostic</span><span>→</span></a>
-   <a class="contact-link" href="mailto:hello@apstudio.com"><span>hello@apstudio.com</span><span>→</span></a>
-   <a class="contact-link" href="#top"><span>Back to top</span><span>↑</span></a>
-  </div>
- </div>
-</section>
-
-<footer>
- <div class="container">
-  <div class="footer-top"><a class="logo" href="#top">AP.<small>STUDIO</small></a><div class="eyebrow gold">Diagnose · Transform · Grow</div></div>
-  <div class="footer-big">Build the business<br><span class="serif">people remember.</span></div>
-  <div class="footer-bottom"><span>© 2026 AP Studio</span><span>Strategy · Brand · Digital · Growth</span></div>
- </div>
-</footer>
-
-<!-- AP DIAGNOSTIC APP -->
-<div class="modal" id="diagModal" aria-hidden="true">
- <div class="app" role="dialog" aria-modal="true" aria-label="AP Diagnostic">
-  <div class="app-head"><div class="app-logo">AP<span>. DIAGNOSTIC</span></div><div class="app-right"><span class="count" id="count">01 / 10</span><button class="close" onclick="closeDiagnostic()" aria-label="Close">×</button></div></div>
-  <div class="progress"><i id="progress"></i></div>
-  <div class="app-body"><div class="question" id="question"></div><div class="results" id="results"></div></div>
- </div>
-</div>
-
-<!-- CONTACT -->
-<div class="contact-modal" id="contactModal">
- <div class="contact-box">
-  <div class="eyebrow">AP STUDIO / CONTACT</div>
-  <h3>Let's talk about<br><span class="serif">the problem.</span></h3>
-  <p>You don't need to know whether you need a website, strategy or marketing. Tell us what is happening and we'll start there.</p>
-  <form class="form" onsubmit="submitContact(event)">
-   <input id="name" required placeholder="Your name" autocomplete="name">
-   <input id="email" required type="email" placeholder="Email" autocomplete="email">
-   <textarea id="message" required placeholder="What's happening in the business?"></textarea>
-   <div class="form-actions"><span class="form-note">This prepares an email in your own email app. No backend required.</span><button class="btn btn-black" type="submit">Prepare email →</button></div>
-  </form>
-  <button class="close-link" onclick="closeContact()">Close</button>
- </div>
-</div>
-<div class="toast" id="toast"></div>
-
+<header class="wrap"><a class="logo" href="#">AP.STUDIO</a><button class="menu" id="menu">☰</button>
+<nav id="nav"><a href="#method" data-k="method">Method</a><a href="#idea" data-k="why">Why AP</a><a href="mailto:info@apstudio.com" data-k="contact">Contact</a>
+<div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="es">ES</button><button data-lang="ca">CA</button></div></nav></header>
+<main>
+<section class="hero"><div class="wrap hero-inner"><div class="eyebrow" data-k="eyebrow">AP GROWTH SYSTEM</div><h1 data-k="heroTitle">Discover what's next for your business.</h1><p data-k="heroText">A practical diagnostic that helps ambitious businesses find their next growth opportunity — and the right moves to unlock it.</p>
+<div class="actions"><button class="btn" id="start" data-k="start">START AP DIAGNOSTIC →</button><a class="btn secondary" href="#method" data-k="how">HOW IT WORKS</a></div><div class="meta"><span data-k="m1">5 MINUTES</span><span data-k="m2">FREE</span><span data-k="m3">BUILT AROUND YOUR BUSINESS</span></div></div></section>
+<div class="strip"><div class="wrap strip-inner"><span>BEAUTY</span><span>FITNESS</span><span>HOSPITALITY</span><span>LIFESTYLE</span><span>AMBITION</span></div></div>
+<section class="section" id="method"><div class="wrap two"><div><div class="kicker" data-k="mk">THE AP METHOD</div><h2 data-k="mt">Clarity before action.</h2><p class="lead" data-k="mp">We don't start by selling you a website, campaign or rebrand. We start by understanding your business, finding the opportunity and deciding what deserves attention first.</p></div>
+<div class="steps"><article class="card"><div class="num">01</div><h3 data-k="s1t">DISCOVER</h3><p data-k="s1p">Tell us what's really happening in your business.</p></article><article class="card"><div class="num">02</div><h3 data-k="s2t">DIAGNOSE</h3><p data-k="s2p">We identify the opportunity with the biggest potential impact.</p></article><article class="card"><div class="num">03</div><h3 data-k="s3t">MOVE</h3><p data-k="s3p">Get a clear direction — and work with us to make it real.</p></article></div></div></section>
+<section class="section center" id="idea"><div class="wrap"><div class="kicker" data-k="ik">THE IDEA</div><h2 data-k="it">Your business has potential.<br>Let's find where it can go next.</h2><p class="lead" data-k="ip">No consultant-speak. No unnecessary deliverables. Just a sharper view of your business and what to do next.</p><div class="actions"><button class="btn" id="start2" data-k="start2">FIND MY NEXT OPPORTUNITY →</button></div></div></section>
+</main><footer><div class="wrap foot"><span>AP.STUDIO — <span data-k="ft">BUILD WHAT'S NEXT.</span></span><span>© 2026 AP Studio</span></div></footer>
+<div class="overlay" id="overlay"><div class="diag"><div class="diaghead"><div><div class="kicker">AP DIAGNOSTIC</div><div class="diagtitle" data-k="dt">Let's find your next opportunity.</div></div><button class="close" id="close">×</button></div><div class="progress"><div class="bar" id="bar"></div></div><div id="qa"></div><div class="diagfoot"><button class="back" id="back" data-k="back">← Back</button><button class="btn" id="next" data-k="next">NEXT →</button></div></div></div>
 <script>
-const questions=[
- {cat:"Position",q:"When someone discovers your business for the first time, what usually happens?",a:[["They get it immediately","Our difference and value are obvious."],["They understand what we do","But not always why they should choose us."],["We need a conversation","The value becomes clear after we explain it."],["It's honestly unclear","People often struggle to understand us."]]},
- {cat:"Offer",q:"How clearly can you explain the valuable problem your core offer solves?",a:[["Very clearly","The problem and outcome are easy to articulate."],["Mostly clearly","We know the value but the story could be sharper."],["Not very clearly","We tend to describe what we do instead."],["We're still figuring it out","The offer itself needs work."]]},
- {cat:"Brand",q:"Does the way your business looks and communicates match the level you want to compete at?",a:[["Absolutely","The brand reinforces our positioning."],["Mostly","It's good, but there are weak spots."],["Not really","The presentation undersells us."],["No","Our brand is holding the business back."]]},
- {cat:"Visibility",q:"How consistently are the right potential customers discovering your business?",a:[["Predictably","We have reliable sources of attention."],["Sometimes","We get visibility, but it fluctuates."],["Mostly referrals","Discovery isn't systematic."],["Rarely","The right people struggle to find us."]]},
- {cat:"Visibility",q:"Do you have a point of view that makes people stop, remember you or talk about you?",a:[["Yes","It's a clear part of our market position."],["Sometimes","We have opinions but aren't consistent."],["Rarely","Most of our communication is promotional."],["No","We haven't defined a real point of view."]]},
- {cat:"Conversion",q:"Once someone is interested, how easy is it for them to understand the next step?",a:[["Very easy","The journey is intentional and obvious."],["Mostly easy","The path is there, but not perfect."],["It depends","It often relies on a salesperson."],["Not easy","There isn't a clear journey."]]},
- {cat:"Conversion",q:"Do prospects understand the value before price becomes the main conversation?",a:[["Yes","Value is established early."],["Usually","Most prospects understand it."],["Often not","Price enters the conversation too early."],["No","We regularly compete on price."]]},
- {cat:"Growth",q:"Can you identify which activities consistently create qualified opportunities?",a:[["Yes","We measure and know what works."],["For some","We have partial visibility."],["Not consistently","We have a rough idea."],["No","We don't really know."]]},
- {cat:"Growth",q:"Are your strategy, brand, marketing, sales and customer experience pulling in the same direction?",a:[["Strongly aligned","They reinforce one another."],["Mostly aligned","There are a few disconnects."],["Somewhat disconnected","Different parts operate separately."],["Not aligned","There is no shared system."]]},
- {cat:"Growth",q:"If something works, do you have a repeatable way to do more of it?",a:[["Yes","We have systems and processes."],["Partly","Some things are repeatable."],["Not really","Growth is inconsistent."],["No","It relies heavily on founder effort."]]}
-];
-const descriptions={
- Position:"Your market position needs sharper definition. This affects messaging, differentiation and the job your website and marketing need to do.",
- Offer:"Your offer/value story is creating friction. Before adding more activity, clarify the problem, outcome and reason the offer is worth choosing.",
- Brand:"Your presentation may not be carrying enough strategic value. Align identity and communication with the position you want to own.",
- Visibility:"The right people are not discovering you predictably enough. Strengthen your point of view, distribution and acquisition system.",
- Conversion:"Attention is not translating into action as efficiently as it could. The journey, proof, messaging and next step need more intentional design.",
- Growth:"The business has an opportunity to become more systematic. Find what works, connect the moving parts and create repeatable growth."
-};
-let current=0,answers=[];
-const $=id=>document.getElementById(id);
-function openDiagnostic(){current=0;answers=[];$("diagModal").classList.add("open");$("diagModal").setAttribute("aria-hidden","false");document.body.classList.add("lock");$("results").style.display="none";$("question").style.display="flex";renderQuestion()}
-function closeDiagnostic(){$("diagModal").classList.remove("open");$("diagModal").setAttribute("aria-hidden","true");document.body.classList.remove("lock")}
-function renderQuestion(){const q=questions[current];$("count").textContent=String(current+1).padStart(2,"0")+" / "+questions.length;$("progress").style.width=(current/questions.length*100)+"%";$("question").innerHTML='<div class="qcat"><span class="qdot"></span><span class="eyebrow">'+safe(q.cat)+'</span></div><h2 class="qtitle">'+safe(q.q)+'</h2><div class="answers">'+q.a.map((x,i)=>'<button class="answer" onclick="answer('+i+')"><div class="answer-head"><span class="letter">'+String.fromCharCode(65+i)+'</span><strong>'+safe(x[0])+'</strong></div><small>'+safe(x[1])+'</small></button>').join("")+'</div><div class="qfoot">'+(current?'<button class="back" onclick="back()">← Back</button>':'<span></span>')+'<span class="hint">Choose what is most true today</span></div>'}
-function answer(i){answers[current]=3-i;current++;if(current<questions.length)renderQuestion();else showResults()}
-function back(){if(current>0){current--;renderQuestion()}}
-function showResults(){
- $("progress").style.width="100%";$("count").textContent="COMPLETE";$("question").style.display="none";$("results").style.display="block";
- const groups={};questions.forEach((q,i)=>(groups[q.cat]??=[]).push(answers[i]??1));
- const scores=Object.keys(groups).map(name=>({name,score:Math.round(groups[name].reduce((a,b)=>a+b,0)/groups[name].length/3*100)}));
- const overall=Math.round(scores.reduce((a,b)=>a+b.score,0)/scores.length),weak=[...scores].sort((a,b)=>a.score-b.score),strong=[...scores].sort((a,b)=>b.score-a.score);
- const headline=overall>=78?"Strong foundation. Now create leverage.":overall>=60?"Good foundation. Clear gaps.":"The opportunity is in the foundations.";
- const intro=overall>=78?"Your fundamentals are strong. The opportunity is to connect what already works into a sharper, more scalable system.":overall>=60?"You have meaningful strengths, but a few weak links are limiting how effectively the business is perceived, discovered and converted.":"There are important gaps between what the business can deliver and what the market currently sees. The priority is not doing more — it is fixing the foundations that make everything else work harder.";
- const rows=scores.map(s=>'<div class="score-row"><span>'+safe(s.name)+'</span><div class="bar"><i style="width:'+s.score+'%"></i></div><b>'+s.score+'</b></div>').join("");
- const gaps=weak.slice(0,2).map((g,i)=>'<div class="gap"><div class="gap-num">0'+(i+1)+'</div><div><h4>'+safe(g.name)+'</h4><p>'+safe(descriptions[g.name])+'</p></div></div>').join("");
- $("results").innerHTML='<div class="eyebrow">AP DIAGNOSIS / YOUR RESULT</div><div class="result-top"><div><div class="score-label eyebrow">Business health</div><div class="score">'+overall+'<span>/100</span></div></div><div><h2 class="result-title">'+safe(headline)+'</h2><p class="result-intro">'+safe(intro)+'</p></div></div><div class="result-columns"><div><h3 class="result-label">Your 6 dimensions</h3><div class="scores">'+rows+'</div></div><div><h3 class="result-label">Where we would look first</h3><div class="gaps">'+gaps+'</div></div></div><div class="priority"><div class="eyebrow gold">THE NEXT MOVE</div><h3>'+safe(weak[0].name)+' is your biggest opportunity.</h3><p>'+safe(descriptions[weak[0].name])+' Your strongest foundation right now is '+safe(strong[0].name)+'. The smart move is to connect that strength to the area creating the most friction — not to add more activity everywhere.</p><div class="result-actions"><button class="btn btn-gold" onclick="talkFromResult()">Talk to AP about my diagnosis →</button><button class="btn btn-outline" onclick="restart()">Retake</button></div><div class="result-note">Calculated locally in your browser · nothing is stored or sent</div></div>';
-}
-function restart(){current=0;answers=[];$("results").style.display="none";$("question").style.display="flex";renderQuestion()}
-function talkFromResult(){closeDiagnostic();openContact()}
-function safe(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-function openContact(){$("contactModal").classList.add("open");document.body.classList.add("lock");setTimeout(()=>$("name").focus(),100)}
-function closeContact(){$("contactModal").classList.remove("open");document.body.classList.remove("lock")}
-function submitContact(e){e.preventDefault();const n=$("name").value.trim(),em=$("email").value.trim(),m=$("message").value.trim();location.href="mailto:hello@apstudio.com?subject="+encodeURIComponent("AP Studio enquiry — "+n)+"&body="+encodeURIComponent("Name: "+n+"\nEmail: "+em+"\n\n"+m);closeContact();toast("Your email app should open with the message prepared.")}
-function toast(t){const x=$("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),3000)}
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeDiagnostic();closeContact()}});
-window.addEventListener("scroll",()=>$("nav").classList.toggle("scrolled",scrollY>35),{passive:true});
+const I={
+en:{method:"Method",why:"Why AP",contact:"Contact",eyebrow:"AP GROWTH SYSTEM",heroTitle:"Discover what's next for your business.",heroText:"A practical diagnostic that helps ambitious businesses find their next growth opportunity — and the right moves to unlock it.",start:"START AP DIAGNOSTIC →",how:"HOW IT WORKS",m1:"5 MINUTES",m2:"FREE",m3:"BUILT AROUND YOUR BUSINESS",mk:"THE AP METHOD",mt:"Clarity before action.",mp:"We don't start by selling you a website, campaign or rebrand. We start by understanding your business, finding the opportunity and deciding what deserves attention first.",s1t:"DISCOVER",s1p:"Tell us what's really happening in your business.",s2t:"DIAGNOSE",s2p:"We identify the opportunity with the biggest potential impact.",s3t:"MOVE",s3p:"Get a clear direction — and work with us to make it real.",ik:"THE IDEA",it:"Your business has potential.<br>Let's find where it can go next.",ip:"No consultant-speak. No unnecessary deliverables. Just a sharper view of your business and what to do next.",start2:"FIND MY NEXT OPPORTUNITY →",ft:"BUILD WHAT'S NEXT.",dt:"Let's find your next opportunity.",back:"← Back",next:"NEXT →",finish:"SHOW MY AP INSIGHT →",business:"What kind of business do you run?",biz:["Beauty / Aesthetics","Gym / Fitness","Bar / Restaurant / Hospitality","Lifestyle / Retail","Other business"]},
+es:{method:"Método",why:"Por qué AP",contact:"Contacto",eyebrow:"SISTEMA DE CRECIMIENTO AP",heroTitle:"Descubre cuál es el siguiente paso para tu negocio.",heroText:"Un diagnóstico práctico para encontrar tu próxima oportunidad de crecimiento y las acciones adecuadas para desbloquearla.",start:"EMPEZAR DIAGNÓSTICO AP →",how:"CÓMO FUNCIONA",m1:"5 MINUTOS",m2:"GRATIS",m3:"ADAPTADO A TU NEGOCIO",mk:"EL MÉTODO AP",mt:"Claridad antes de actuar.",mp:"No empezamos vendiéndote una web, una campaña o un rebranding. Primero entendemos tu negocio, encontramos la oportunidad y decidimos qué merece atención.",s1t:"DESCUBRE",s1p:"Cuéntanos qué está pasando realmente en tu negocio.",s2t:"DIAGNOSTICA",s2p:"Identificamos la oportunidad con mayor potencial de impacto.",s3t:"AVANZA",s3p:"Obtén una dirección clara y, si quieres, la hacemos realidad contigo.",ik:"LA IDEA",it:"Tu negocio tiene potencial.<br>Descubramos hacia dónde puede crecer.",ip:"Sin lenguaje de consultoría. Sin entregables innecesarios. Solo una visión más clara de tu negocio y del siguiente paso.",start2:"ENCUENTRA TU PRÓXIMA OPORTUNIDAD →",ft:"CONSTRUYE LO QUE VIENE.",dt:"Descubramos tu próxima oportunidad.",back:"← Atrás",next:"SIGUIENTE →",finish:"VER MI INSIGHT AP →",business:"¿Qué tipo de negocio tienes?",biz:["Belleza / Estética","Gym / Fitness","Bar / Restaurante / Hospitality","Lifestyle / Retail","Otro negocio"]},
+ca:{method:"Mètode",why:"Per què AP",contact:"Contacte",eyebrow:"SISTEMA DE CREIXEMENT AP",heroTitle:"Descobreix quin és el següent pas per al teu negoci.",heroText:"Un diagnòstic pràctic per trobar la teva pròxima oportunitat de creixement i les accions adequades per desbloquejar-la.",start:"COMENÇAR DIAGNÒSTIC AP →",how:"COM FUNCIONA",m1:"5 MINUTS",m2:"GRATUÏT",m3:"ADAPTAT AL TEU NEGOCI",mk:"EL MÈTODE AP",mt:"Claredat abans d'actuar.",mp:"No comencem venent-te una web, una campanya o un rebranding. Primer entenem el teu negoci, trobem l'oportunitat i decidim què mereix atenció.",s1t:"DESCOBREIX",s1p:"Explica'ns què està passant realment al teu negoci.",s2t:"DIAGNOSTICA",s2p:"Identifiquem l'oportunitat amb més potencial d'impacte.",s3t:"AVANÇA",s3p:"Obté una direcció clara i, si vols, la fem realitat amb tu.",ik:"LA IDEA",it:"El teu negoci té potencial.<br>Descobrim cap a on pot créixer.",ip:"Sense llenguatge de consultoria. Sense entregables innecessaris. Només una visió més clara del teu negoci i del següent pas.",start2:"TROBA LA TEVA PRÒXIMA OPORTUNITAT →",ft:"CONSTRUEIX EL QUE VE.",dt:"Descobrim la teva pròxima oportunitat.",back:"← Enrere",next:"SEGÜENT →",finish:"VEURE EL MEU INSIGHT AP →",business:"Quin tipus de negoci tens?",biz:["Bellesa / Estètica","Gym / Fitness","Bar / Restaurant / Hospitality","Lifestyle / Retail","Un altre negoci"]}};
+const Q={
+en:{common:[["What would you most like to improve right now?",["More customers / bookings","More repeat customers","A stronger reputation","A clearer brand","More visibility","More revenue from what we already have"]],["Where do most new customers currently come from?",["Instagram / social","Google / search","Word of mouth","Walk-ins / local traffic","Paid advertising","I'm not really sure"]],["What feels hardest at the moment?",["Getting people to notice us","Getting people to choose us","Getting people to come back","Keeping demand consistent","Knowing what to focus on","Turning attention into sales"]]],beauty:[["Where is your biggest opportunity right now?",["More first-time bookings","More repeat bookings","Higher-value treatments","Filling quiet days / hours","Standing out locally","More referrals"]],["What usually makes someone choose you?",["Reviews / reputation","Instagram / visual identity","Location / convenience","Price / offer","Your expertise","I'm not sure"]]],gym:[["Where would growth make the biggest difference?",["More new memberships","More trials converting","Better retention","Filling quiet hours","Higher-value memberships","More referrals"]],["Why do members choose your gym?",["Community","Coaching","Equipment / space","Location","Price","Our brand / atmosphere"]]],bar:[["Where is your biggest opportunity?",["Filling quiet days","Increasing average spend","More repeat guests","More bookings / groups","Becoming a destination","More events / collaborations"]],["When do you feel demand is weakest?",["Early week","Midweek","Late afternoon","Certain hours","It changes seasonally","Demand is fairly consistent"]],["Why do people choose your venue?",["Atmosphere","Drinks / food","Music / events","Location","Community","I'm not sure"]]],lifestyle:[["Where would growth make the biggest difference?",["More footfall","More online sales","More repeat customers","A stronger community","Better average order value","More visibility"]],["What makes people choose you?",["Product / quality","Aesthetic / brand","Price","Location","Community","I'm not sure"]]],other:[["What would make the biggest difference to your business?",["More customers","More repeat business","Higher-value sales","More visibility","A stronger brand","More clarity"]],["What feels hardest right now?",["Being discovered","Standing out","Converting interest","Keeping demand consistent","Knowing what to focus on","Growing profitably"]]]},
+es:{common:[["¿Qué te gustaría mejorar más ahora mismo?",["Más clientes / reservas","Más clientes recurrentes","Una reputación más fuerte","Una marca más clara","Más visibilidad","Más ingresos con lo que ya tienes"]],["¿De dónde vienen principalmente tus nuevos clientes?",["Instagram / redes","Google / búsquedas","Recomendaciones","Paso por delante / zona","Publicidad de pago","No lo tengo claro"]],["¿Qué es lo más difícil ahora mismo?",["Conseguir que nos descubran","Conseguir que nos elijan","Conseguir que vuelvan","Mantener una demanda constante","Saber en qué centrarnos","Convertir atención en ventas"]]],beauty:[["¿Dónde está tu mayor oportunidad?",["Más primeras reservas","Más reservas recurrentes","Tratamientos de mayor valor","Llenar días / horas flojas","Destacar localmente","Más recomendaciones"]],["¿Qué suele hacer que alguien te elija?",["Reseñas / reputación","Instagram / identidad visual","Ubicación / comodidad","Precio / oferta","Tu experiencia","No estoy seguro"]]],gym:[["¿Dónde marcaría más diferencia el crecimiento?",["Más membresías","Convertir más pruebas","Mejor retención","Llenar horas flojas","Membresías de mayor valor","Más recomendaciones"]],["¿Por qué eligen tu gym?",["Comunidad","Coaching","Equipamiento / espacio","Ubicación","Precio","Marca / ambiente"]]],bar:[["¿Dónde está tu mayor oportunidad?",["Llenar días flojos","Aumentar el gasto medio","Más clientes recurrentes","Más reservas / grupos","Convertirte en un destino","Más eventos / colaboraciones"]],["¿Cuándo notas menos demanda?",["Inicio de semana","Entre semana","Última hora de la tarde","Cambia por temporada","La demanda es bastante constante"]],["¿Por qué elige la gente tu local?",["Ambiente","Comida / bebida","Música / eventos","Ubicación","Comunidad","No lo tengo claro"]]],lifestyle:[["¿Dónde marcaría más diferencia el crecimiento?",["Más tráfico físico","Más ventas online","Más compras recurrentes","Una comunidad más fuerte","Mayor ticket medio","Más visibilidad"]],["¿Qué hace que te elijan?",["Producto / calidad","Estética / marca","Precio","Ubicación","Comunidad","No lo tengo claro"]]],other:[["¿Qué cambiaría más tu negocio?",["Más clientes","Más recurrencia","Ventas de mayor valor","Más visibilidad","Una marca más fuerte","Más claridad"]],["¿Qué es lo más difícil ahora?",["Que nos descubran","Destacar","Convertir interés","Mantener demanda","Saber en qué centrarnos","Crecer de forma rentable"]]]},
+ca:{common:[["Què t'agradaria millorar més ara mateix?",["Més clients / reserves","Més clients recurrents","Una reputació més forta","Una marca més clara","Més visibilitat","Més ingressos amb el que ja tens"]],["D'on venen principalment els teus nous clients?",["Instagram / xarxes","Google / cerques","Recomanacions","Pas de gent / zona","Publicitat de pagament","No ho tinc clar"]],["Què és el més difícil ara mateix?",["Aconseguir que ens descobreixin","Aconseguir que ens triïn","Aconseguir que tornin","Mantenir una demanda constant","Saber en què centrar-nos","Convertir atenció en vendes"]]],beauty:[["On és la teva major oportunitat?",["Més primeres reserves","Més reserves recurrents","Tractaments de més valor","Omplir dies / hores fluixes","Destacar localment","Més recomanacions"]],["Què fa que algú et triï?",["Ressenyes / reputació","Instagram / identitat visual","Ubicació / comoditat","Preu / oferta","La teva experiència","No n'estic segur"]]],gym:[["On marcaria més diferència el creixement?",["Més membres","Convertir més proves","Millor retenció","Omplir hores fluixes","Membresies de més valor","Més recomanacions"]],["Per què trien el teu gym?",["Comunitat","Coaching","Equipament / espai","Ubicació","Preu","Marca / ambient"]]],bar:[["On és la teva major oportunitat?",["Omplir dies fluixos","Augmentar la despesa mitjana","Més clients recurrents","Més reserves / grups","Convertir-te en un destí","Més esdeveniments / col·laboracions"]],["Quan notes menys demanda?",["Inici de setmana","Entre setmana","Última hora de la tarda","Certes hores","Canvia segons la temporada","La demanda és força constant"]],["Per què tria la gent el teu local?",["Ambient","Menjar / beguda","Música / esdeveniments","Ubicació","Comunitat","No ho tinc clar"]]],lifestyle:[["On marcaria més diferència el creixement?",["Més trànsit físic","Més vendes online","Més compres recurrents","Una comunitat més forta","Major tiquet mitjà","Més visibilitat"]],["Què fa que et triïn?",["Producte / qualitat","Estètica / marca","Preu","Ubicació","Comunitat","No ho tinc clar"]]],other:[["Què canviaria més el teu negoci?",["Més clients","Més recurrència","Vendes de més valor","Més visibilitat","Una marca més forta","Més claredat"]],["Què és el més difícil ara?",["Que ens descobreixin","Destacar","Convertir interès","Mantenir la demanda","Saber en què centrar-nos","Créixer de manera rendible"]]]}};
+let lang="en",type="",questions=[],answers=[],step=0;const $=s=>document.querySelector(s),overlay=$("#overlay"),qa=$("#qa"),bar=$("#bar"),next=$("#next"),back=$("#back");
+function applyLang(){const t=I[lang];document.documentElement.lang=lang;document.querySelectorAll("[data-k]").forEach(e=>{if(t[e.dataset.k]!=null)e.innerHTML=t[e.dataset.k]});document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));if(overlay.classList.contains("open"))render()}
+document.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{lang=b.dataset.lang;applyLang()});
+function openDiag(){type="";questions=[];answers=[];step=0;overlay.classList.add("open");document.body.style.overflow="hidden";render()}function closeDiag(){overlay.classList.remove("open");document.body.style.overflow=""}
+function build(){questions=[["BUSINESS",I[lang].biz],...(Q[lang][type]||Q[lang].other),...Q[lang].common]}
+function render(){const t=I[lang];if(!type){qa.innerHTML='<div class="qmeta">01 / 01</div><div class="question">'+t.business+'</div><div class="options">'+t.biz.map((x,i)=>'<button class="option" data-type="'+["beauty","gym","bar","lifestyle","other"][i]+'"><span>'+x+'</span><small>→</small></button>').join("")+'</div>';next.style.visibility="hidden";back.style.visibility="hidden";bar.style.width="0%";qa.querySelectorAll("[data-type]").forEach(b=>b.onclick=()=>{type=b.dataset.type;build();step=1;render()});return}
+const q=questions[step-1],selected=answers[step-1],total=questions.length;qa.innerHTML='<div class="qmeta">'+String(step).padStart(2,"0")+" / "+total+'</div><div class="question">'+q[0]+'</div><div class="options">'+q[1].map((x,i)=>'<button class="option '+(selected===i?"selected":"")+'" data-i="'+i+'"><span>'+x+'</span><small>'+(selected===i?"✓":"→")+'</small></button>').join("")+"</div>";qa.querySelectorAll(".option").forEach(b=>b.onclick=()=>{answers[step-1]=+b.dataset.i;render()});bar.style.width=(step/total*100)+"%";back.style.visibility=step>1?"visible":"hidden";next.style.visibility="visible";next.textContent=step===total?t.finish:t.next}
+function showResult(){const t=I[lang],idx=answers.slice(1),avg=idx.reduce((a,b)=>a+(b===undefined?3:[4,3,3,5,2,4][b]),0)/Math.max(1,idx.length),score=Math.round(Math.max(58,Math.min(93,100-avg*5)));let title,text;
+if(type==="bar"&&answers[2]!==undefined&&answers[2]<2){title={en:"weekday demand",es:"la demanda entre semana",ca:"la demanda entre setmana"}[lang];text={en:"Your opportunity may be to create a stronger reason to visit on quieter days — then build the offer, experience and campaign around it.",es:"Tu oportunidad puede estar en crear un motivo más fuerte para venir en los días flojos y construir alrededor la oferta, experiencia y campaña.",ca:"La teva oportunitat pot ser crear un motiu més fort per venir els dies fluixos i construir al voltant l'oferta, l'experiència i la campanya."}[lang]}
+else if(type==="gym"){title={en:"turning interest into memberships",es:"convertir interés en membresías",ca:"convertir interès en membresies"}[lang];text={en:"Your next move may be improving the journey from first impression to trial to membership.",es:"Tu siguiente paso puede ser mejorar el camino desde el primer contacto hasta la prueba y la membresía.",ca:"El teu següent pas pot ser millorar el camí des del primer contacte fins a la prova i la membresia."}[lang]}
+else if(type==="beauty"){title={en:"differentiation and trust",es:"diferenciación y confianza",ca:"diferenciació i confiança"}[lang];text={en:"Your opportunity may be turning your expertise and experience into a clearer reason to choose you.",es:"Tu oportunidad puede ser convertir tu experiencia y conocimiento en una razón más clara para elegirte.",ca:"La teva oportunitat pot ser convertir la teva experiència i coneixement en un motiu més clar per triar-te."}[lang]}
+else{title={en:"focus",es:"el foco",ca:"el focus"}[lang];text={en:"Your opportunity may be choosing one high-impact priority and aligning your brand and marketing around it.",es:"Tu oportunidad puede ser elegir una prioridad de alto impacto y alinear tu marca y marketing alrededor de ella.",ca:"La teva oportunitat pot ser triar una prioritat d'alt impacte i alinear la teva marca i màrqueting al seu voltant."}[lang]}
+qa.innerHTML='<div class="qmeta">AP INSIGHT</div><div class="question">'+({en:"Your next opportunity starts with one clear decision.",es:"Tu próxima oportunidad empieza con una decisión clara.",ca:"La teva pròxima oportunitat comença amb una decisió clara."}[lang])+'</div><div class="result-score">'+score+'</div><div class="result-label">'+({en:"growth readiness",es:"potencial de crecimiento",ca:"potencial de creixement"}[lang])+'</div><div class="insight">'+({en:"Your biggest opportunity is around ",es:"Tu mayor oportunidad está relacionada con ",ca:"La teva major oportunitat està relacionada amb "}[lang])+'<strong>'+title+'</strong>.</div><p class="result-note">'+text+'</p><div class="result-actions"><a class="btn" href="mailto:info@apstudio.com?subject=AP%20Growth%20Blueprint">'+({en:"TALK TO AP →",es:"HABLAR CON AP →",ca:"PARLAR AMB AP →"}[lang])+'</a><button class="btn secondary" id="again">'+({en:"RUN AGAIN",es:"REPETIR",ca:"TORNAR-HO A FER"}[lang])+'</button></div>';next.style.visibility="hidden";back.style.visibility="hidden";bar.style.width="100%";$("#again").onclick=()=>{type="";answers=[];step=0;render()}}
+next.onclick=()=>{if(answers[step-1]===undefined)return;if(step===questions.length){showResult();return}step++;render()};back.onclick=()=>{if(step>1){step--;render()}};
+$("#start").onclick=openDiag;$("#start2").onclick=openDiag;$("#close").onclick=closeDiag;overlay.onclick=e=>{if(e.target===overlay)closeDiag()};document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDiag()});$("#menu").onclick=()=>$("#nav").classList.toggle("open");document.querySelectorAll("#nav a").forEach(a=>a.onclick=()=>$("#nav").classList.remove("open"));
 </script>
-</body>
-</html>
+</body></html>
